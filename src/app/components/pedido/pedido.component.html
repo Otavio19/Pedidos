@@ -1,0 +1,47 @@
+<div class="container">
+    <form action="POST" >
+        <div class="inputBox">
+            <label for="clientePedido">Cliente</label>
+            <input type="text"
+                placeholder="Cliente.."
+                id="clientePedido"
+                name="clientePedido"
+                [(ngModel)]="pedido.clientePedido"
+            >
+        </div>
+        
+        <div class="inputBox">
+            <label for="vendedorPedido">Vendedor responsável:</label>
+            <input type="text"
+                placeholder="Vendedor.."
+                id="vendedorPedido"
+                name="vendedorPedido"
+                [(ngModel)]="pedido.vendedorPedido"
+            >
+        </div>
+        <div class="inputBox">
+            <label for="produtoPedido">Produtos:</label>
+            <input type="text" 
+                placeholder="Produto.." 
+                id="produtoPedido"
+                name="produtoPedido"
+                [(ngModel)]="pedido.produtosPedido"
+            >
+        </div>
+
+        <div class="inputBox">
+            <label for="quantidadePedido">Quantidade</label>
+            <input type="number"
+                placeholder="Quantidade.."
+                id="quantidadePedido"
+                name="quantidadePedido"
+                [(ngModel)]="pedido.quantidadePedido"
+            >
+        </div>
+        
+        <div class="inputBox">
+            <button (click)="adcProduto()">Adicionar Produto</button>
+        </div>
+
+    </form>
+</div>

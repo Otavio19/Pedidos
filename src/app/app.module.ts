@@ -15,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListarClientesComponent } from './components/listar-clientes/listar-clientes.component';
 import { CadastrarClienteComponent } from './components/cadastrar-cliente/cadastrar-cliente.component';
 import { ClienteComponent } from './components/pages/cliente/cliente.component';
+import { PedidoComponent } from './components/pedido/pedido.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ClienteComponent } from './components/pages/cliente/cliente.component';
     EstoqueComponent,
     ListarClientesComponent,
     CadastrarClienteComponent,
-    ClienteComponent
+    ClienteComponent,
+    PedidoComponent
   ],
   imports: [
     BrowserModule,
