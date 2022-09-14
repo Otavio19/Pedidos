@@ -1,0 +1,33 @@
+<div class="content">
+  <h2>Produtos Cadastrados</h2>
+  <div class="searchContent">
+    <input type="text" placeholder="Buscar Produtos.."
+     class="searchProduct"
+    (input)="search($event)">
+    <button (input)="search($event)">Buscar</button>
+  </div>
+  <table *ngIf="produtos.length >0; else noProducts">
+    <thead>
+      <th>ID</th>
+      <th>Nome do Produto</th>
+      <th>Estoque</th>
+      <th>Status</th>
+      <th>Ações</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let produto of produtos">
+          <td>{{produto.id}}</td>
+          <td>{{produto.nameProduct}}</td>
+          <td>{{produto.amount}}</td>
+          <td>Ativo</td>
+          <td>
+            <button>Editar</button>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+  <ng-template #noProducts>
+    <h3>Buscando Produtos...</h3>
+  </ng-template>
+</div>
+

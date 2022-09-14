@@ -1,0 +1,22 @@
+<form autocomplete="off">
+  <h2>Cadastrar Produto</h2>
+  <label for="">Nome do Produto</label>
+  <input
+  type="text"
+  placeholder="Nome do Produto"
+  name="nomeProduto"
+  [(ngModel)]="produto.nameProduct">
+
+  <label for="">Quantidade em Estoque</label>
+  <input
+  type="number"
+  placeholder="Quantidade em Estoque"
+  name="quantidadeEstoque"
+  [(ngModel)]="produto.amount"
+  min="1">
+  <div class="buttons">
+    <button (click)="submit()" type="submit">Salvar</button>
+    <button>Cancelar</button>
+  </div>
+</form>
+

@@ -1,0 +1,83 @@
+.content
+{
+  background-color:  #FFFFFF;
+  border-radius: 20px;
+  border: 1px solid #002333;
+  position: relative;
+  padding: 2rem;
+  margin: auto;
+  text-align: center;
+}
+
+h2
+{
+  color: #002333;
+  margin-bottom: 2rem;
+}
+
+.searchContent
+{
+  border-radius: 0.5rem;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #B4BEC9;
+}
+
+.searchContent input, .searchContent button
+{
+  font-size: 1.1rem;
+  outline: none;
+}
+
+.searchContent input{
+  outline: none;
+  border: none;
+  background-color: #B4BEC9;
+  padding-right: 1rem;
+}
+
+.searchContent button
+{
+  background-color: transparent;
+  border: 1px solid #002333;
+  padding: 0.3rem 1rem;
+  cursor: pointer;
+}
+
+/* Tira o espaçamento entre as células.*/
+table
+{
+  border-collapse: collapse;
+  width: 80%;
+  margin: auto;
+  margin-top: 2rem;
+  text-align: left;
+}
+
+thead
+{
+  background-color: #002333;
+  color: white;
+}
+
+th, td
+{
+  border: 1px solid  #B4BEC9;
+  padding: 0.7rem 1rem;
+}
+
+td button
+{
+  width: 100%;
+  padding: 0.3rem 0rem;
+  cursor: pointer;
+}
+
+tr:nth-child(odd)
+{
+	background:  #B4BEC9;
+}
+
+tr:hover{
+  background-color: #159A9C;
+}

@@ -1,0 +1,15 @@
+<div class="content">
+  <h2>Cliente Cadastrado</h2>
+  <label for="">Nome do Cliente:</label>
+  <input type="text"
+  value="{{cliente.nomeCliente}}"
+  name="nomeCliente"
+  [(ngModel)]="cliente.nomeCliente">
+
+  <div class="buttons">
+    <button (click)="salvarEdit()" routerLink="/listar-clientes">Salvar</button>
+    <button routerLink="/listar-clientes">Cancelar</button>
+    <button (click)="apagarClient()" routerLink="listar-clientes" routerLink="/listar-clientes">Apagar</button>
+  </div>
+</div>
+

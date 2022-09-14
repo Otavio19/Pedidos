@@ -1,0 +1,14 @@
+<form autocomplete="off">
+  <h2>Cadastrar Cliente</h2>
+  <label for="">Nome do Cliente</label>
+  <input
+  type="text"
+  placeholder="Nome do Cliente.."
+  name="nomeProduto"
+  [(ngModel)]="cliente.nomeCliente">
+
+  <div class="buttons">
+    <button (click)="submit()" type="submit">Salvar</button>
+    <button>Cancelar</button>
+  </div>
+</form>

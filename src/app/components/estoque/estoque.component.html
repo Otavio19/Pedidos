@@ -1,0 +1,69 @@
+<div class="content">
+  <h2>Movimentar estoque</h2>
+  <div class="contentForm">
+    <form action="" autocomplete="off">
+      <div class="containerInput">
+        <label for="">Produto:</label>
+        <input type="text"
+        name="nameProduct"
+        [(ngModel)]="formulario.id"
+        list="produtosNome"
+        >
+        <datalist id="produtosNome">
+          <option *ngFor="let nomeProdutos of produtos"  [value]="nomeProdutos.id">
+            {{nomeProdutos.nameProduct}}
+          </option>
+        </datalist>
+      </div>
+
+      <div class="containerInput">
+        <label for="">Quantidade:</label>
+        <input  type="number"
+                placeholder="Quantidade.."
+                min="0"
+                name="amountProduct"
+                [(ngModel)]="formulario.quantidade">
+      </div>
+
+      <div class="containerInput">
+          <label for="">Movimentação de </label>
+          <select name=""
+            name="tipo"
+            [(ngModel)]="formulario.tipo">
+            <option value="Entrada">Entrada</option>
+            <option value="Saida">Saida</option>
+            <option value="Inventario">Inventário</option>
+          </select>
+      </div>
+    </form>
+    <div class="buttons">
+      <button (click)="adcProduct()">Adicionar</button>
+      <button (click)="salvarMov()">Salvar</button>
+      <button>Cancelar</button>
+    </div>
+  </div>
+  <div class="contentTable">
+    <table>
+      <thead>
+        <th>ID</th>
+        <th>Nome do Produto</th>
+        <th>Tipo</th>
+        <th>Estoque Atual</th>
+        <th>Estoque Futuro</th>
+        <th>Ação</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let produtos of lista">
+          <td>{{produtos.id}}</td>
+          <td>{{produtos.nomeProduto}}</td>
+          <td>{{produtos.tipo}}</td>
+          <td>{{produtos.quantidadeAtual}}</td>
+          <td>{{produtos.quantidadeFutura}}</td>
+          <td>
+            <button (click)="deletProduct(produtos)">Apagar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

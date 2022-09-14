@@ -1,0 +1,20 @@
+/*
+ CORES DO SISTEMA:
+ #FFFFFF
+ #DEEFE7
+ #B4BEC9
+ #159A9C
+ #002333
+*/
+
+*{
+  padding:0;
+  margin:0;
+}
+
+body
+{
+  background-color: #DEEFE7;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 1.2rem;
+}

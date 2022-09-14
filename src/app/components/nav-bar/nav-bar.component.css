@@ -1,0 +1,63 @@
+.list-menu{
+  background-color: #002333;
+  height: 100%;
+  display: inline-block;
+  position: fixed;
+  padding: 5rem 1rem;
+  z-index: 1;
+  list-style: none;
+}
+
+li, label
+{
+  padding: 0.8rem 1.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  width: 100%;
+}
+
+label, li{
+  list-style: none;
+  text-decoration: none;
+  color:#FFFFFF
+}
+
+#drop, #dropClient
+{
+  display: none;
+}
+
+li:hover, label:hover
+{
+  background-color: #B4BEC9;
+}
+
+label:hover, li:hover
+{
+  color: #002333;
+}
+
+.drop-menu-produtos, .drop-menu-clientes
+{
+  overflow: hidden;
+  text-align: center;
+  transition: height .4s ease;
+  transition: 0.5s;
+  height: 0px;
+  text-align: left;
+  padding-left: 0;
+  background-color: #B4BEC9;
+  border-radius: 0.5rem;
+  margin-bottom: 0.2rem;
+}
+
+.drop-menu-produtos li, .drop-menu-clientes li
+{
+  color: #002333;
+  border-top: 1px solid #002333;
+}
+
+#drop:checked + .drop-menu-produtos, #dropClient:checked + .drop-menu-clientes
+{
+  height: 7.2rem;
+}
