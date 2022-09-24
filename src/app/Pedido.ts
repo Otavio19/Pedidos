@@ -1,8 +1,9 @@
+import { IProduto } from "./Produto";
+
 export interface Pedido{
     id?: number,
     clientePedido?: String,
     vendedorPedido?: String,
-    numeroPedido?: number,
-    produtosPedido?: [],
+    produtosPedido?: IProduto[],
     valorPedido?: String
 }

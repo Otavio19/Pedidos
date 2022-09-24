@@ -24,9 +24,16 @@
             <input type="text" 
                 placeholder="Produto.." 
                 id="produtoPedido"
-                name="produtoPedido"
-                [(ngModel)]="pedido.produtosPedido"
+                name="nameProduct"
+                [(ngModel)]="produto.id"
+                list="produtosNome"
             >
+
+            <datalist id="produtosNome">
+                <option *ngFor="let nomeProdutos of opcProdutos"  [value]="nomeProdutos.id">
+                  {{nomeProdutos.nameProduct}}
+                </option>
+              </datalist>
         </div>
 
         <div class="inputBox">
@@ -34,14 +41,34 @@
             <input type="number"
                 placeholder="Quantidade.."
                 id="quantidadePedido"
-                name="quantidadePedido"
-                [(ngModel)]="pedido.quantidadePedido"
+                name="amount"
+                [(ngModel)]="produto.amount"
             >
         </div>
-        
+
         <div class="inputBox">
             <button (click)="adcProduto()">Adicionar Produto</button>
+            <button (click)="adcPedido()">Salvar Pedido</button>
         </div>
 
     </form>
+
+    <table>
+        <thead>
+            <th>ID</th>
+            <th>Nome do Produto</th>
+            <th>Quantidade</th>
+            <th>Ação</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let produtos of produtos">
+              <td>{{produtos.id}}</td>
+              <td>{{produtos.nameProduct}}</td>
+              <td>{{produtos.amount}}</td>
+              <td>
+                <button (click)="deletProduct(produtos)">Apagar</button>
+              </td>
+            </tr>
+          </tbody>
+    </table>
 </div>

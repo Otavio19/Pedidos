@@ -16,6 +16,7 @@ import { ListarClientesComponent } from './components/listar-clientes/listar-cli
 import { CadastrarClienteComponent } from './components/cadastrar-cliente/cadastrar-cliente.component';
 import { ClienteComponent } from './components/pages/cliente/cliente.component';
 import { PedidoComponent } from './components/pedido/pedido.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { PedidoComponent } from './components/pedido/pedido.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

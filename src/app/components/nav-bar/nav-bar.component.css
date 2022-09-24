@@ -7,6 +7,18 @@
   z-index: 1;
   list-style: none;
 }
+#menuRecall
+{
+  position: absolute;
+  z-index: 2;
+  width: 25px;
+  height: 25px;
+}
+
+#menuRecall:checked ~ ul
+{
+  display: none;
+}
 
 li, label
 {
