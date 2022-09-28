@@ -1,0 +1,41 @@
+.content
+{
+  background-color:  #FFFFFF;
+  border-radius: 20px;
+  border: 1px solid #002333;
+  position: relative;
+  padding: 2rem;
+  margin: auto;
+  text-align: center;
+}
+
+.pedidosContainer
+{
+    margin-top: 5rem;
+}
+
+.pedidoBox
+{
+    border: 1px solid #002333;
+    width: 90%;
+    margin-bottom: 1.5rem;
+    text-align: left;
+    padding: 1rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.pedidoBox:hover
+{
+    transform: translate(-0.5rem, -0.5rem);
+}
+
+.pedidoClient, .pedidoId, .pedidoVendedor, .pedidoValor
+{
+    display: inline-block;
+    width: 50%;
+}
+
+.pedidoId, .pedidoValor{
+    text-align: right;
+}

@@ -8,6 +8,7 @@ import { EstoqueComponent } from './components/estoque/estoque.component';
 import { HomeComponent } from './components/home/home.component';
 import { ListarProdutosComponent } from './components/listar-produtos/listar-produtos.component';
 import { PedidoComponent } from './components/pedido/pedido.component';
+import { PedidosComponent } from './components/pedidos/pedidos.component';
 
 const routes: Routes = [
   {path:'', component: HomeComponent},
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path:'listar-clientes',component: ListarClientesComponent},
   {path:'cadastrar-cliente', component: CadastrarClienteComponent},
   {path:'pages/cliente/:id',component: ClienteComponent},
-  {path:'pedido',component: PedidoComponent}
+  {path:'pedido',component: PedidoComponent},
+  {path:'pedidos',component:PedidosComponent}
 ];
 
 @NgModule({

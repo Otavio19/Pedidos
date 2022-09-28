@@ -12,8 +12,8 @@ export class PedidoService {
 
   constructor( private http : HttpClient ) { }
 
-  getAllPedidos(){
-    return this.http.get(this.urlApi)
+  getAllPedidos():Observable<Pedido[]>{
+    return this.http.get<Pedido[]>(this.urlApi)
   }
 
   createPedido(pedido: Pedido):Observable<Pedido>{
