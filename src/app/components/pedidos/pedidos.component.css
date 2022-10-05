@@ -7,18 +7,38 @@
   padding: 2rem;
   margin: auto;
   text-align: center;
+  position: relative;
+}
+
+.novoPedido
+{
+    border: 1px solid #002333;
+    position: absolute;
+    right: 2rem;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    text-transform: uppercase;
+    background-color: #002333;
+    color: white;
+    border-radius: 0.5rem;
+    transition: 0.5s;
+}
+
+.novoPedido:hover
+{
+    transform: scale(1.1);
 }
 
 .pedidosContainer
 {
-    margin-top: 5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .pedidoBox
 {
     border: 1px solid #002333;
     width: 90%;
-    margin-bottom: 1.5rem;
     text-align: left;
     padding: 1rem;
     cursor: pointer;

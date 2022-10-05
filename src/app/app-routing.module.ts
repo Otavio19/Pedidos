@@ -9,6 +9,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ListarProdutosComponent } from './components/listar-produtos/listar-produtos.component';
 import { PedidoComponent } from './components/pedido/pedido.component';
 import { PedidosComponent } from './components/pedidos/pedidos.component';
+import { VerPedidoComponent } from './components/pages/ver-pedido/ver-pedido.component';
 
 const routes: Routes = [
   {path:'', component: HomeComponent},
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path:'cadastrar-cliente', component: CadastrarClienteComponent},
   {path:'pages/cliente/:id',component: ClienteComponent},
   {path:'pedido',component: PedidoComponent},
-  {path:'pedidos',component:PedidosComponent}
+  {path:'pedidos',component:PedidosComponent},
+  {path: 'ver-pedido', component:VerPedidoComponent}
 ];
 
 @NgModule({

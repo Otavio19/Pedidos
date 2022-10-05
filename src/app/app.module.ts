@@ -18,6 +18,7 @@ import { ClienteComponent } from './components/pages/cliente/cliente.component';
 import { PedidoComponent } from './components/pedido/pedido.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PedidosComponent } from './components/pedidos/pedidos.component';
+import { VerPedidoComponent } from './components/pages/ver-pedido/ver-pedido.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { PedidosComponent } from './components/pedidos/pedidos.component';
     CadastrarClienteComponent,
     ClienteComponent,
     PedidoComponent,
-    PedidosComponent
+    PedidosComponent,
+    VerPedidoComponent
   ],
   imports: [
     BrowserModule,
