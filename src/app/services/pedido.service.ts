@@ -16,6 +16,10 @@ export class PedidoService {
     return this.http.get<Pedido[]>(this.urlApi)
   }
 
+  getPedido(id:Number):Observable<Pedido>{
+    return this.http.get<Pedido>(`${this.urlApi}/${id}`)
+  }
+
   createPedido(pedido: Pedido):Observable<Pedido>{
     return this.http.post<Pedido>(this.urlApi, pedido)
   }

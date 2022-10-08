@@ -17,7 +17,7 @@ export class ClienteComponent implements OnInit {
     private activatedRoute: ActivatedRoute) { }
 
     cliente!: ICliente
-
+    //  Vai pegar a propriedade "ID" que está na URL
     id = Number(this.activatedRoute.snapshot.paramMap.get('id'))
   ngOnInit(): void {
     this.clienteService.getClient(this.id).subscribe(item =>{
