@@ -1,6 +1,6 @@
 import { compileNgModule } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { delay, Observable } from 'rxjs';
+import { delay, Observable, timeout } from 'rxjs';
 import { Pedido } from 'src/app/Pedido';
 import { IProduto } from 'src/app/Produto'
 import { PedidoService } from 'src/app/services/pedido.service';
