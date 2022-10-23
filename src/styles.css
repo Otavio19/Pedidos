@@ -18,3 +18,14 @@ body
   font-family: 'Nunito Sans', sans-serif;
   font-size: 1.2rem;
 }
+
+.main
+{
+  background-color:  #FFFFFF;
+  border-radius: 20px;
+  border: 1px solid #002333;
+  position: relative;
+  padding: 2rem;
+  margin: auto;
+  position: relative;
+}

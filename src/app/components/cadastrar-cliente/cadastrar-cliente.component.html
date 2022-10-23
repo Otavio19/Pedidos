@@ -1,14 +1,19 @@
-<form autocomplete="off">
-  <h2>Cadastrar Cliente</h2>
-  <label for="">Nome do Cliente</label>
-  <input
-  type="text"
-  placeholder="Nome do Cliente.."
-  name="nomeProduto"
-  [(ngModel)]="cliente.nomeCliente">
+<div class="main">
+  <form autocomplete="off">
+    <h2>Cadastrar Cliente</h2>
+    <div class="inputBox">
+      <input
+      type="text"
+      name="nomeProduto"
+      [(ngModel)]="cliente.nomeCliente"
+      required="required">
+      <label for="">Nome do Cliente</label>
+    </div>
 
-  <div class="buttons">
-    <button (click)="submit()" type="submit">Salvar</button>
-    <button>Cancelar</button>
-  </div>
-</form>
+    <div class="buttons">
+      <button (click)="submit()" type="submit" routerLink="../listar-clientes">Salvar</button>
+      <button routerLink="../listar-clientes">Cancelar</button>
+    </div>
+  </form>
+</div>
+

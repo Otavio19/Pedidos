@@ -42,10 +42,6 @@ label, li{
 li:hover, label:hover
 {
   background-color: #B4BEC9;
-}
-
-label:hover, li:hover
-{
   color: #002333;
 }
 

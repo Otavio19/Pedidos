@@ -1,11 +1,13 @@
-<div class="content">
+<div class="main">
   <h2>Cliente Cadastrado</h2>
-  <label for="">Nome do Cliente:</label>
-  <input type="text"
-  value="{{cliente.nomeCliente}}"
-  name="nomeCliente"
-  [(ngModel)]="cliente.nomeCliente">
-
+  <div class="inputBox">
+    <input type="text"
+    value="{{cliente.nomeCliente}}"
+    name="nomeCliente"
+    [(ngModel)]="cliente.nomeCliente"
+    required="required">
+    <label for="">Nome do Cliente:</label>
+  </div>
   <div class="buttons">
     <button (click)="salvarEdit()" routerLink="/listar-clientes">Salvar</button>
     <button routerLink="/listar-clientes">Cancelar</button>

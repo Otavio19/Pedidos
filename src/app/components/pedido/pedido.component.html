@@ -2,36 +2,38 @@
     Produto Já informado na Lista!
 </div>
 
-<div class="container">
+<div class="main">
     <form action="POST" >
+      <h2>Novo Pedido</h2>
+      <hr>
         <div class="inputBox">
-            <label for="clientePedido">Cliente</label>
-            <input type="text"
-                placeholder="Cliente.."
-                id="clientePedido"
-                name="clientePedido"
-                [(ngModel)]="pedido.clientePedido"
+          <input  type="text"
+                  id="clientePedido"
+                  name="clientePedido"
+                  [(ngModel)]="pedido.clientePedido"
+                  required="required"
             >
+          <label>Cliente</label>
         </div>
-        
+
         <div class="inputBox">
-            <label for="vendedorPedido">Vendedor responsável:</label>
             <input type="text"
-                placeholder="Vendedor.."
                 id="vendedorPedido"
                 name="vendedorPedido"
                 [(ngModel)]="pedido.vendedorPedido"
+                required="required"
             >
+          <label for="">Vendedor</label>
         </div>
+        <hr>
         <div class="inputBox">
-            <label for="produtoPedido">Produtos:</label>
-            <input type="text" 
-                placeholder="Produto.." 
+            <input type="text"
                 id="produtoPedido"
                 name="nameProduct"
                 [(ngModel)]="produto.id"
                 list="produtosNome"
             >
+          <label for="">Produtos:</label>
 
             <datalist id="produtosNome">
                 <option *ngFor="let nomeProdutos of opcProdutos"  [value]="nomeProdutos.id">
@@ -41,16 +43,17 @@
         </div>
 
         <div class="inputBox">
-            <label for="quantidadePedido">Quantidade</label>
             <input type="number"
-                placeholder="Quantidade.."
+                min="1"
                 id="quantidadePedido"
                 name="amount"
                 [(ngModel)]="produto.amount"
+                required="required"
             >
+            <label>Quantidade</label>
         </div>
 
-        <div class="inputBox">
+        <div class="buttons">
             <button (click)="adcProduto()">Adicionar Produto</button>
             <button (click)="adcPedido()" routerLink="../pedidos">Salvar Pedido</button>
         </div>
