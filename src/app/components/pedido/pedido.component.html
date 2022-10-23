@@ -1,3 +1,7 @@
+<div class="popUp" [ngStyle]="{'display':display}" (click)="fecharPopUp()">
+    Produto Já informado na Lista!
+</div>
+
 <div class="container">
     <form action="POST" >
         <div class="inputBox">
@@ -53,11 +57,16 @@
 
     </form>
 
+    <div class="valorPedido">
+        TOTAL: {{pedido.valorPedido}}
+    </div>
+
     <table>
         <thead>
             <th>ID</th>
             <th>Nome do Produto</th>
             <th>Quantidade</th>
+            <th>Valor</th>
             <th>Ação</th>
           </thead>
           <tbody>
@@ -65,6 +74,7 @@
               <td>{{produtos.id}}</td>
               <td>{{produtos.nameProduct}}</td>
               <td>{{produtos.amount}}</td>
+              <td>{{produtos.priceProduct}}</td>
               <td>
                 <button (click)="deletProduct(produtos)">Apagar</button>
               </td>

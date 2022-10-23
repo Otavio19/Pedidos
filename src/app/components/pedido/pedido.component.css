@@ -2,6 +2,7 @@
 {
     background-color: #fff;
     padding: 0;
+    padding-bottom: 2rem;
 }
 
 form
@@ -51,6 +52,17 @@ button
   border-radius: 0.3rem;
 }
 
+.valorPedido
+{
+  display: inline-block;
+  background-color: #002333;
+  color: #FFFFFF;
+  text-align: center;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  margin-left: 2rem;
+}
+
 /* Tira o espaçamento entre as células.*/
 table
 {
@@ -93,4 +105,24 @@ tr:hover{
 datalist
 {
   width: 120rem;
+}
+
+/*MODAL*/
+
+.popUp
+{
+  position: absolute;
+  top: -0.1%;
+  top: 2rem;
+  left: 50%;
+  background-color: #FA6060;
+  color: #fff;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.popUp:hover
+{
+  transform: scale(1.1);
 }

@@ -12,7 +12,8 @@ export class CadastrarProdutoComponent implements OnInit {
 
   produto: IProduto = {
     nameProduct: '',
-    amount: ''
+    amount: '',
+    priceProduct: ''
   };
 
   constructor(

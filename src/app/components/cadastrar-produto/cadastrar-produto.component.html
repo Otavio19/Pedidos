@@ -14,9 +14,17 @@
   name="quantidadeEstoque"
   [(ngModel)]="produto.amount"
   min="1">
+
+  <label for="">Valor</label>
+  <input
+  type="number"
+  placeholder="Valor do produto"
+  name="quantidadeEstoque"
+  [(ngModel)]="produto.priceProduct"
+  min="1">
   <div class="buttons">
     <button (click)="submit()" type="submit">Salvar</button>
-    <button>Cancelar</button>
+    <button routerLink="../listar-produtos">Cancelar</button>
   </div>
 </form>
 
