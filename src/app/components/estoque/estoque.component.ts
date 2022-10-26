@@ -71,7 +71,6 @@ export class EstoqueComponent implements OnInit {
 
    salvarMov(){
     for(let i = 0 ; i < this.lista.length ; i++){
-      console.log(this.lista[i].id, this.lista[i].quantidadeFutura)
       let produto = {
         id: this.lista[i].id,
         nameProduct: this.lista[i].nomeProduto,

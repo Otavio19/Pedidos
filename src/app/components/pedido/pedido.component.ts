@@ -58,19 +58,14 @@ export class PedidoComponent implements OnInit {
         })
 
         this.pedido.valorPedido = String(Number(Number(this.pedido.valorPedido)+Number(produtoUm.priceProduct)).toFixed(2))
-        console.log(this.pedido.valorPedido)
-
       } else{
         this.display = 'block'
       }
     })
-
-    this.calcularTotal()
   }
 
   deletProduct(name:any){
     let index = this.produtos.indexOf(name)
-    console.log('Valor para excluir: '+this.produtos[index].priceProduct)
 
     let aux = this.produtos[index].priceProduct
     this.pedido.valorPedido = String(Number(Number(this.pedido.valorPedido) - Number(aux)).toFixed(2))
@@ -79,14 +74,32 @@ export class PedidoComponent implements OnInit {
    }
 
    adcPedido(){
+    for(let i = 0 ; i < this.produtos.length ; i++){
+
+      this.produtoService.getById(Number(this.produtos[i].id)).subscribe(dado =>{
+        let novaMov = Number(dado.amount) - Number(this.produtos[i].amount)
+
+        let produtos = {
+          id: this.produtos[i].id,
+          nameProduct: this.produtos[i].nameProduct,
+          amount: novaMov,
+          priceProduct: this.produtos[i].priceProduct
+        }
+        
+        this.produtoService.saveMov(Number(this.produtos[i].id), produtos)
+      })
+      /*let produtos = {
+        id: this.produtos[i].id,
+        nameProduct: this.produtos[i].nameProduct,
+        amount: this.produtos[i].amount,
+        priceProduct: this.produtos[i].priceProduct
+      }*/
+    }
+
     this.pedidoService.createPedido(this.pedido).subscribe()
    }
 
    fecharPopUp(){
     this.display = 'none'
-  }
-
-  calcularTotal(){
-
   }
 }

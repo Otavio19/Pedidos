@@ -2,7 +2,9 @@
   background-color: #002333;
   height: 100%;
   display: inline-block;
-  position: fixed;
+  position: sticky;
+  top: -1;
+  height: 100vh;
   padding: 5rem 1rem;
   z-index: 1;
   list-style: none;

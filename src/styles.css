@@ -26,6 +26,5 @@ body
   border: 1px solid #002333;
   position: relative;
   padding: 2rem;
-  margin: auto;
-  position: relative;
+  position: static;
 }
