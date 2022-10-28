@@ -1,11 +1,17 @@
-<div class="content">
-  <h2>Produtos Cadastrados</h2>
-  <div class="searchContent">
-    <input type="text" placeholder="Buscar Produtos.."
-     class="searchProduct"
-    (input)="search($event)">
-    <button (input)="search($event)">Buscar</button>
+<div class="main">
+  <div class="novoProduto" routerLink="../pedido">
+    <i class='bx bx-plus' ></i>
+    Novo produto
+</div>
+  <div class="titleContent">
+    <h2>Produtos Cadastrados</h2>
+    <div class="searchContent">
+      <input type="text" placeholder="Buscar Produtos.."
+       class="searchProduct"
+      (input)="search($event)">
+    </div>
   </div>
+  
   <table *ngIf="produtos.length >0; else noProducts">
     <thead>
       <th>ID</th>

@@ -1,10 +1,15 @@
-<div class="content">
-  <h2>Clientes Cadastrados</h2>
-  <div class="searchContent">
-    <input type="text"
-    placeholder="Buscar Clientes.."
-    (input)="search($event)">
-    <button>Buscar</button>
+<div class="main">
+  <div class="novoCliente" routerLink="../cadastrar-cliente">
+      <i class='bx bx-plus' ></i>
+      Novo Cliente
+  </div>
+  <div class="titleContent">
+    <h2>Clientes Cadastrados</h2>
+    <div class="searchContent">
+      <input type="text"
+      placeholder="Buscar Clientes.."
+      (input)="search($event)">
+    </div>
   </div>
   <table>
     <thead>
@@ -16,7 +21,7 @@
       <tr>
         <td>{{cliente.id}}</td>
         <td>{{cliente.nomeCliente}}</td>
-        <td>
+        <td class="editItem">
           <button routerLink="/pages/cliente/{{cliente.id}}">Editar</button>
         </td>
       </tr>

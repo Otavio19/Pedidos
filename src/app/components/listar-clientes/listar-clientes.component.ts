@@ -40,7 +40,6 @@ export class ListarClientesComponent implements OnInit {
   search(e: Event):void{
     const target = e.target as HTMLInputElement
     const value = target.value
-    console.log(value)
     this.Client = this.allClient.filter(x =>
       x.nomeCliente.trim().toLowerCase().includes(value.trim().toLowerCase())
    )}

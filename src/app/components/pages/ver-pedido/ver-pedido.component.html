@@ -1,4 +1,4 @@
-<div class="content">
+<div class="main">
     <div class="idPedido"># <span>{{pedido.id}}</span></div>
     <div class="inputBox">
         <label for="">Cliente</label><br>
@@ -14,12 +14,14 @@
             <th>ID</th>
             <th>Nome do Produto</th>
             <th>Quantidade</th>
+            <th>Preço</th>
           </thead>
           <tbody>
             <tr *ngFor="let produto of pedido.produtosPedido">
               <td>{{produto.id}}</td>
               <td>{{produto.nameProduct}}</td>
               <td>{{produto.amount}}</td>
+              <td>{{produto.priceProduct}}</td>
             </tr>
           </tbody>
     </table>

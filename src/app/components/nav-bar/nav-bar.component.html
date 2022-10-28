@@ -1,40 +1,87 @@
-<input type="checkbox" id="menuRecall">
+<!--<nav class="menu">
+  <ul class="listMenu">
+    <li class="itemMenu" routerLink="">Home</li>
+    <li class="itemMenu" routerLink="pedidos">Pedidos</li>
+    <li class="itemMenu">
+      <label for="checkBoxProdutos">Produtos</label>
+      <input type="radio" id="checkBoxProdutos" name="checkBoxMenu">
+      <ul class="subMenu">
+        <li class="itemMenu" routerLink="listar-produtos">Produtos</li>
+        <li class="itemMenu" routerLink="cadastrar-produtos">
+          Cadastrar Produtos
+        </li>
+      </ul>
+    </li>
+    <li class="itemMenu" routerLink="estoque">Estoque</li>
+    <li class="itemMenu">
+      <label for="checkBoxClientes">Clientes</label>
+      <input type="radio" id="checkBoxClientes" name="checkBoxMenu">
+      <ul class="subMenu">
+        <li class="itemMenu" routerLink="listar-clientes">Clientes</li>
+        <li class="itemMenu" routerLink="cadastrar-cliente">
+          Cadastrar Clientes
+        </li>
+      </ul>
+    </li>
+    <li class="itemMenu"></li>
+  </ul>
+</nav> -->
 
-<ul class="list-menu">
-  <li routerLink="">
-    Home
-  </li>
-  <li routerLink="pedidos">
-    Pedidos
-  </li>
-  <label for="drop" class="item-product">
-    Produtos
-  </label>
-  <input type="checkbox" id="drop">
-  <ul class="drop-menu-produtos">
-    <li class="itemList" routerLink="listar-produtos">
-      Produtos
+<div class="sidebar">
+  <div class="logo-details">
+    <i class='bx bxl-c-plus-plus icon'></i>
+      <i class='bx bx-menu' id="btn" ></i>
+  </div>
+  <ul class="nav-list">
+    <li>
+      <a href="#">
+        <i class='bx bx-grid-alt'></i>
+        <span class="links_name"  routerLink="">HOME</span>
+      </a>
+       <span class="tooltip">HOME</span>
     </li>
-    <li class="itemList" routerLink="cadastrar-produtos">
-      Cadastrar Produtos
+
+    <li >
+      <a href="#"  routerLink="pedidos">
+        <i class='bx bx-store-alt' ></i>
+        <span class="links_name">Pedido</span>
+      </a>
+      <span class="tooltip">Pedido</span>
     </li>
+
+    <li>
+     <a href="#"  routerLink="listar-clientes">
+       <i class='bx bx-user' ></i>
+       <span class="links_name">Clientes</span>
+     </a>
+     <span class="tooltip">Clientes</span>
+   </li>
+   <li>
+     <a href="#" routerLink="estoque">
+       <i class='bx bx-pie-chart-alt-2' ></i>
+       <span class="links_name">Estoque</span>
+     </a>
+     <span class="tooltip">Estoque</span>
+   </li>
+   <li>
+     <a href="#" routerLink="listar-produtos">
+      <i class='bx bx-cart-alt' ></i>
+       <span class="links_name">Produtos</span>
+     </a>
+     <span class="tooltip">Produtos</span>
+   </li>
+   <li class="profile">
+       <div class="profile-details">
+         <!--<img src="profile.jpg" alt="profileImg">-->
+         <div class="name_job">
+           <div class="name">Prem Shahi</div>
+           <div class="job">Web designer</div>
+         </div>
+       </div>
+       <i class='bx bx-log-out' id="log_out" ></i>
+   </li>
   </ul>
-  <li routerLink="estoque">
-    Estoque
-  </li>
-  <label for="dropClient">
-    Clientes
-  </label>
-  <input type="checkbox" id="dropClient">
-  <ul class="drop-menu-clientes">
-    <li class="itemList" routerLink="listar-clientes">
-      Clientes
-    </li>
-    <li class="itemList" routerLink="cadastrar-cliente">
-      Cadastrar Cliente
-    </li>
-  </ul>
-  <li>
-    By: Otávio Afonso :)
-  </li>
-</ul>
+</div>
+<section class="home-section">
+  <router-outlet></router-outlet>
+</section>

@@ -1,12 +1,26 @@
-.content
+.titleContent
 {
-  background-color:  #FFFFFF;
-  border-radius: 20px;
-  border: 1px solid #002333;
-  position: relative;
-  padding: 2rem;
-  margin: auto;
   text-align: center;
+}
+
+.novoCliente
+{
+  border: 1px solid #002333;
+  position: absolute;
+  right: 2rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  text-transform: uppercase;
+  background-color: #002333;
+  color: white;
+  border-radius: 0.5rem;
+  transition: 0.5s;
+  z-index: 1;
+}
+
+.novoCliente:hover 
+{
+    transform: scale(1.1);
 }
 
 h2
@@ -68,9 +82,11 @@ th, td
 
 td button
 {
-  width: 100%;
+  width: 80%;
   padding: 0.3rem 0rem;
   cursor: pointer;
+  margin: auto;
+  display: block;
 }
 
 tr:nth-child(odd)
@@ -80,4 +96,26 @@ tr:nth-child(odd)
 
 tr:hover{
   background-color: #159A9C;
+}
+
+.editItem
+{
+  position:relative;
+  color: white;
+}
+
+.editItem button
+{
+  border: 1px solid #002333;
+  cursor: pointer;
+  text-transform: uppercase;
+  background-color: #002333;
+  border-radius: 0.5rem;
+  transition: 0.5s;
+  color: white;
+}
+
+button:hover 
+{
+    transform: scale(1.1);
 }

@@ -83,17 +83,11 @@ export class PedidoComponent implements OnInit {
           id: this.produtos[i].id,
           nameProduct: this.produtos[i].nameProduct,
           amount: novaMov,
-          priceProduct: this.produtos[i].priceProduct
+          priceProduct: dado.priceProduct
         }
         
         this.produtoService.saveMov(Number(this.produtos[i].id), produtos)
       })
-      /*let produtos = {
-        id: this.produtos[i].id,
-        nameProduct: this.produtos[i].nameProduct,
-        amount: this.produtos[i].amount,
-        priceProduct: this.produtos[i].priceProduct
-      }*/
     }
 
     this.pedidoService.createPedido(this.pedido).subscribe()

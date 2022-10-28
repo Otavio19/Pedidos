@@ -1,13 +1,26 @@
-.content
+.search
 {
-  background-color:  #FFFFFF;
-  border-radius: 20px;
-  border: 1px solid #002333;
-  position: relative;
-  padding: 2rem;
-  margin: auto;
-  text-align: center;
-  position: relative;
+    text-align: center;
+    position: relative;
+}
+
+.search i
+{
+    position: absolute;
+}
+
+i
+{
+    font-size: 1.6rem;
+    bottom: 0.1rem;
+}
+
+.search input
+{
+    border: none;
+    border-bottom: 1px solid #002333;
+    outline: none;
+    padding-left: 1.7rem;
 }
 
 .novoPedido
@@ -22,6 +35,7 @@
     color: white;
     border-radius: 0.5rem;
     transition: 0.5s;
+    z-index: 1;
 }
 
 .novoPedido:hover
