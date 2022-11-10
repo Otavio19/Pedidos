@@ -1,5 +1,5 @@
 <div class="main">
-  <div class="novoProduto" routerLink="../cadastrar-produtosng ">
+  <div class="novoProduto" routerLink="../cadastrar-produtos">
     <i class='bx bx-plus' ></i>
     Novo produto
 </div>
@@ -11,7 +11,7 @@
       (input)="search($event)">
     </div>
   </div>
-  
+
   <table *ngIf="produtos.length >0; else noProducts">
     <thead>
       <th>ID</th>

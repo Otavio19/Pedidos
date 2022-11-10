@@ -69,13 +69,16 @@
 {
     position: absolute;
     bottom: 0;
-    background-color: bisque;
     font-size: 1.2rem;
     padding: 0.2rem 1rem;
     border-radius: 0.3rem;
     transition: 0.3s;
     height: 0;
     opacity: 0;
+    z-index: 1;
+    background: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    color: #159A9C;
 }
 
 .cardValue:hover ~ .toolCardValue
