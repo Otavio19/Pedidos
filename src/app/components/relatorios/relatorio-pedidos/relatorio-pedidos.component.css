@@ -1,0 +1,49 @@
+/* Tira o espaçamento entre as células.*/
+table
+{
+  border-collapse: collapse;
+  width: 90%;
+  margin: auto;
+  margin-top: 2rem;
+  text-align: left;
+}
+
+thead
+{
+  background-color: #002333;
+  color: white;
+}
+
+th, td
+{
+  border: 1px solid  #B4BEC9;
+  padding: 0.7rem 1rem;
+}
+
+td button
+{
+  width: 100%;
+  padding: 0.3rem 1rem;
+  cursor: pointer;
+  border: none;
+}
+
+tr:nth-child(odd)
+{
+	background:  #B4BEC9;
+}
+
+tr:hover, tfoot:hover{
+  background-color: #159A9C;
+}
+
+tfoot
+{
+  text-align: right;
+  text-transform: uppercase;
+}
+
+tfoot td:nth-child(2)
+{
+  text-align: left;
+}

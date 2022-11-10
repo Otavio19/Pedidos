@@ -1,6 +1,7 @@
 import { Pedido } from './../../Pedido';
 import { PedidoService } from './../../services/pedido.service';
 import { Component, OnInit } from '@angular/core';
+import { ProductServiceService } from 'src/app/services/product-service.service';
 
 @Component({
   selector: 'app-home',
@@ -11,11 +12,13 @@ export class HomeComponent implements OnInit {
 
   totalVendas = 0
   faturamento = 0
+  totalProdutos = 0
 
-  constructor(private pedidoService:PedidoService) { }
+  constructor(private pedidoService:PedidoService, private produtoService:ProductServiceService) { }
 
   ngOnInit(): void {
     this.getFaturamento()
+    this.getProdutos()
   }
 
 
@@ -26,5 +29,9 @@ export class HomeComponent implements OnInit {
         this.totalVendas += 1
       }
     })
+  }
+
+  getProdutos(){
+    this.produtoService.getAll().subscribe(dado => this.totalProdutos = dado.length)
   }
 }

@@ -1,0 +1,26 @@
+<div class="main">
+    <h1>Relatório de Pedidos</h1>
+    <hr>
+    <div class="contentTable">
+        <table>
+          <thead>
+            <th>ID</th>
+            <th>Cliente</th>
+            <th>Vendedor</th>
+            <th>Valor do Pedido</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let pedido of pedidos"  routerLink="/pages/ver-pedido/{{pedido.id}}">
+              <td>{{pedido.id}}</td>
+              <td>{{pedido.clientePedido}}</td>
+              <td>{{pedido.vendedorPedido}}</td>
+              <td>{{pedido.valorPedido}}$</td>
+            </tr>
+          </tbody>
+                <tfoot>
+                    <td colspan="3"><b>total:</b></td>
+                    <td><b>{{totalFaturado}} $</b></td>
+            </tfoot>
+        </table>
+      </div>
+</div>

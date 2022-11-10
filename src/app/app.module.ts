@@ -19,6 +19,7 @@ import { PedidoComponent } from './components/pedido/pedido.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PedidosComponent } from './components/pedidos/pedidos.component';
 import { VerPedidoComponent } from './components/pages/ver-pedido/ver-pedido.component';
+import { RelatorioPedidosComponent } from './components/relatorios/relatorio-pedidos/relatorio-pedidos.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { VerPedidoComponent } from './components/pages/ver-pedido/ver-pedido.com
     ClienteComponent,
     PedidoComponent,
     PedidosComponent,
-    VerPedidoComponent
+    VerPedidoComponent,
+    RelatorioPedidosComponent
   ],
   imports: [
     BrowserModule,
