@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
 
   totalVendas = 0
   faturamento = 0
+  faturamentoFormatado!:String
   totalProdutos = 0
 
   constructor(private pedidoService:PedidoService, private produtoService:ProductServiceService) { }
@@ -27,8 +28,10 @@ export class HomeComponent implements OnInit {
       for(let i = 0 ; i < dado.length ; i++){
         this.faturamento += Number(dado[i].valorPedido)
         this.totalVendas += 1
+        this.faturamentoFormatado = this.faturamento.toFixed(2)
       }
     })
+    
   }
 
   getProdutos(){

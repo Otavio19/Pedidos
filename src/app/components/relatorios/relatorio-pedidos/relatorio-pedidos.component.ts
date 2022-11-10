@@ -10,17 +10,37 @@ import { PedidoService } from 'src/app/services/pedido.service';
 export class RelatorioPedidosComponent implements OnInit {
 
   pedidos:Pedido[] = []
+  pedidosFilter:Pedido[] = []
   totalFaturado = 0
+  totalFaturadoFormatado!:String
 
   constructor(private pedidoService:PedidoService) { }
 
   ngOnInit(): void {
     this.pedidoService.getAllPedidos().subscribe(dado =>{
       this.pedidos = dado
-      for(let i = 0 ; i < this.pedidos.length ; i++){
-        this.totalFaturado += Number(this.pedidos[i].valorPedido)
-      }
+      this.pedidosFilter = dado
+      this.getFaturamento()
     })
-    
+  }
+
+  search(e : Event):void{
+    const target = e.target as HTMLInputElement
+    const value = target.value
+    console.log(value)
+    this.pedidos = this.pedidosFilter.filter(x =>
+      x.vendedorPedido!.trim().toLowerCase().includes(value.trim().toLowerCase())
+   )
+
+   this.getFaturamento()
+  }
+
+  getFaturamento(){
+   this.totalFaturado = 0
+    for(let i = 0 ; i < this.pedidos.length ; i++){
+      this.totalFaturado += Number(this.pedidos[i].valorPedido)
+    }
+
+    this.totalFaturadoFormatado = this.totalFaturado.toFixed(2)
   }
 }

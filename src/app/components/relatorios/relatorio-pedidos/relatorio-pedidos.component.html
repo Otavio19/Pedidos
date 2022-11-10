@@ -1,6 +1,11 @@
 <div class="main">
     <h1>Relatório de Pedidos</h1>
     <hr>
+    <div class="searchContent">
+      <input type="text" placeholder="Filtrar por Vendedor.."
+       class="searchProduct"
+      (input)="search($event)">
+    </div>
     <div class="contentTable">
         <table>
           <thead>
@@ -19,7 +24,7 @@
           </tbody>
                 <tfoot>
                     <td colspan="3"><b>total:</b></td>
-                    <td><b>{{totalFaturado}} $</b></td>
+                    <td><b>{{totalFaturadoFormatado}} $</b></td>
             </tfoot>
         </table>
       </div>

@@ -16,7 +16,7 @@ export class PedidosComponent implements OnInit {
   ngOnInit(): void {
     this.pedidoService.getAllPedidos().subscribe(dado =>{
       for(let i = 0 ; i < dado.length ; i++){
-        this.pedidos.push(dado[i])
+        this.pedidos.unshift(dado[i])
       }
     })
     console.log(this.pedidos)

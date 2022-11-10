@@ -37,7 +37,7 @@
 
             <datalist id="produtosNome">
                 <option *ngFor="let nomeProdutos of opcProdutos"  [value]="nomeProdutos.id">
-                  {{nomeProdutos.nameProduct}}
+                  {{nomeProdutos.nameProduct}} || {{nomeProdutos.priceProduct}}$
                 </option>
               </datalist>
         </div>

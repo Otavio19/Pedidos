@@ -47,3 +47,25 @@ tfoot td:nth-child(2)
 {
   text-align: left;
 }
+
+
+.searchContent
+{
+  border-radius: 0.5rem;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #B4BEC9;
+}
+
+.searchContent input, .searchContent button
+{
+  font-size: 1.1rem;
+  outline: none;
+}
+
+.searchContent input{
+  outline: none;
+  border: none;
+  background-color: #B4BEC9;
+  padding-right: 1rem;
+}
