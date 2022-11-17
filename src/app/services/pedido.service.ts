@@ -8,8 +8,8 @@ import { Pedido } from '../Pedido';
 })
 export class PedidoService {
 
-  private urlApi = 'https://62d87c1890883139359173dd.mockapi.io/pedidos'
-
+  //private urlApi = 'https://62d87c1890883139359173dd.mockapi.io/pedidos'
+  private urlApi = 'https://x8ki-letl-twmt.n7.xano.io/api:C7hm_OI1/pedidos'
   constructor( private http : HttpClient ) { }
 
   getAllPedidos():Observable<Pedido[]>{

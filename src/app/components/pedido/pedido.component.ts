@@ -1,5 +1,6 @@
 import { compileNgModule } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { faThList } from '@fortawesome/free-solid-svg-icons';
 import { delay, Observable, timeout } from 'rxjs';
 import { Pedido } from 'src/app/Pedido';
 import { IProduto } from 'src/app/Produto'
@@ -79,11 +80,13 @@ export class PedidoComponent implements OnInit {
       this.produtoService.getById(Number(this.produtos[i].id)).subscribe(dado =>{
         let novaMov = Number(dado.quantidadeProduto) - Number(this.produtos[i].quantidadeProduto)
 
+        console.log('Produto: '+this.produtos[i].nomeProduto + "|| Nova mov: "+ novaMov)
+
         let produtos = {
           id: this.produtos[i].id,
-          nameProduct: this.produtos[i].nomeProduto,
-          amount: novaMov,
-          priceProduct: dado.precoProduto
+          nomeProduto: this.produtos[i].nomeProduto,
+          quantidadeProduto: novaMov,
+          precoProduto: dado.precoProduto
         }
 
         this.produtoService.saveMov(Number(this.produtos[i].id), produtos)

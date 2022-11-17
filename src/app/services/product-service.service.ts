@@ -27,7 +27,7 @@ export class ProductServiceService {
     return this.http.post<IProduto>(this.urlApi, produto).pipe()
   }
 
-  saveMov(id:number, valor:any){
+  saveMov(id:Number, valor:any){
     return this.http.put(`${this.urlApi}/${id}`,valor).subscribe(retorno => console.log("Produto atualizados com sucesso."))
   }
 }

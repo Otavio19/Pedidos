@@ -14,10 +14,9 @@ export class VerPedidoComponent implements OnInit {
               private activatedRoute:ActivatedRoute) {}
 
   pedido!: Pedido
+
   //  Vai pegar a propriedade "ID" que está na URL
   id = Number(this.activatedRoute.snapshot.paramMap.get('id'))
   ngOnInit(): void {
     this.pedidoService.getPedido(this.id).subscribe(dado => this.pedido = dado)
-  }
-
-}
+  }}
