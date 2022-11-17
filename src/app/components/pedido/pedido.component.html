@@ -37,7 +37,7 @@
 
             <datalist id="produtosNome">
                 <option *ngFor="let nomeProdutos of opcProdutos"  [value]="nomeProdutos.id">
-                  {{nomeProdutos.nameProduct}} || {{nomeProdutos.priceProduct}}$
+                  {{nomeProdutos.nomeProduto}} || {{nomeProdutos.precoProduto}}$
                 </option>
               </datalist>
         </div>
@@ -47,7 +47,7 @@
                 min="1"
                 id="quantidadePedido"
                 name="amount"
-                [(ngModel)]="produto.amount"
+                [(ngModel)]="produto.quantidadeProduto"
                 required="required"
             >
             <label>Quantidade</label>
@@ -76,9 +76,9 @@
           <tbody>
             <tr *ngFor="let produtos of produtos">
               <td>{{produtos.id}}</td>
-              <td>{{produtos.nameProduct}}</td>
-              <td>{{produtos.amount}}</td>
-              <td>{{produtos.priceProduct}}</td>
+              <td>{{produtos.nomeProduto}}</td>
+              <td>{{produtos.quantidadeProduto}}</td>
+              <td>{{produtos.precoProduto}}</td>
               <td>
                 <button (click)="deletProduct(produtos)">Apagar</button>
               </td>

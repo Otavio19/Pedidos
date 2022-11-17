@@ -19,9 +19,9 @@ export class PedidoComponent implements OnInit {
 
   produto: IProduto = {
     id: 0,
-    nameProduct: '',
-    amount: '',
-    priceProduct: ''
+    nomeProduto: '',
+    quantidadeProduto: '',
+    precoProduto: ''
   }
 
   pedido: Pedido = {
@@ -52,12 +52,12 @@ export class PedidoComponent implements OnInit {
        if(found == undefined){
         this.produtos.unshift(produtoUm = {
           id: dado.id,
-          nameProduct : dado.nameProduct,
-          amount : this.produto.amount,
-          priceProduct: String(Number(dado.priceProduct) * Number(this.produto.amount))
+          nomeProduto : dado.nomeProduto,
+          quantidadeProduto : this.produto.quantidadeProduto,
+          precoProduto: String(Number(dado.precoProduto) * Number(this.produto.quantidadeProduto))
         })
 
-        this.pedido.valorPedido = String(Number(Number(this.pedido.valorPedido)+Number(produtoUm.priceProduct)).toFixed(2))
+        this.pedido.valorPedido = String(Number(Number(this.pedido.valorPedido)+Number(produtoUm.precoProduto)).toFixed(2))
       } else{
         this.display = 'block'
       }
@@ -67,7 +67,7 @@ export class PedidoComponent implements OnInit {
   deletProduct(name:any){
     let index = this.produtos.indexOf(name)
 
-    let aux = this.produtos[index].priceProduct
+    let aux = this.produtos[index].precoProduto
     this.pedido.valorPedido = String(Number(Number(this.pedido.valorPedido) - Number(aux)).toFixed(2))
     this.produtos.splice(index,1)
     console.log('Valor do pedido: '+this.pedido.valorPedido)
@@ -77,15 +77,15 @@ export class PedidoComponent implements OnInit {
     for(let i = 0 ; i < this.produtos.length ; i++){
 
       this.produtoService.getById(Number(this.produtos[i].id)).subscribe(dado =>{
-        let novaMov = Number(dado.amount) - Number(this.produtos[i].amount)
+        let novaMov = Number(dado.quantidadeProduto) - Number(this.produtos[i].quantidadeProduto)
 
         let produtos = {
           id: this.produtos[i].id,
-          nameProduct: this.produtos[i].nameProduct,
+          nameProduct: this.produtos[i].nomeProduto,
           amount: novaMov,
-          priceProduct: dado.priceProduct
+          priceProduct: dado.precoProduto
         }
-        
+
         this.produtoService.saveMov(Number(this.produtos[i].id), produtos)
       })
     }

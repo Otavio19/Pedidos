@@ -9,7 +9,8 @@ import { catchError, Observable } from 'rxjs';
 })
 export class ProductServiceService {
 
-  private urlApi = 'https://62d87c1890883139359173dd.mockapi.io/produto';
+  //private urlApi = 'https://62d87c1890883139359173dd.mockapi.io/produto';
+  private urlApi= 'https://x8ki-letl-twmt.n7.xano.io/api:Az8xGr_h/Produtos'
 
   constructor( private http : HttpClient) {
   }

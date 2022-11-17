@@ -37,25 +37,28 @@ export class EstoqueComponent implements OnInit {
     if(this.formulario.tipo =="Entrada"){
       return this.produtoService.getById(id).subscribe(retorno => this.lista.push({
         'id' : retorno.id,
-        'nomeProduto' : retorno.nameProduct,
+        'nomeProduto' : retorno.nomeProduto,
         'tipo' : this.formulario.tipo,
-        'quantidadeAtual' : retorno.amount,
-        'quantidadeFutura' : retorno.amount + this.formulario.quantidade
+        'quantidadeAtual' : retorno.quantidadeProduto,
+        'quantidadeFutura' : Number(retorno.quantidadeProduto) + Number(this.formulario.quantidade),
+        'precoProduto': retorno.precoProduto
       }))
     } if(this.formulario.tipo == "Saida"){
       return this.produtoService.getById(id).subscribe(retorno => this.lista.push({
         'id' : retorno.id,
-        'nomeProduto' : retorno.nameProduct,
+        'nomeProduto' : retorno.nomeProduto,
         'tipo' : this.formulario.tipo,
-        'quantidadeAtual' : retorno.amount,
-        'quantidadeFutura' : Number(retorno.amount) - Number(this.formulario.quantidade)
+        'quantidadeAtual' : retorno.quantidadeProduto,
+        'quantidadeFutura' : Number(retorno.quantidadeProduto) - Number(this.formulario.quantidade),
+        'precoProduto': retorno.precoProduto
       }))
     } return this.produtoService.getById(id).subscribe(retorno => this.lista.push({
       'id' : retorno.id,
-      'nomeProduto' : retorno.nameProduct,
+      'nomeProduto' : retorno.nomeProduto,
       'tipo' : this.formulario.tipo,
-      'quantidadeAtual' : retorno.amount,
-      'quantidadeFutura' : Number(this.formulario.quantidade)
+      'quantidadeAtual' : retorno.quantidadeProduto,
+      'quantidadeFutura' : Number(this.formulario.quantidade),
+      'precoProduto': retorno.precoProduto
     }))
    }
 
@@ -73,8 +76,9 @@ export class EstoqueComponent implements OnInit {
     for(let i = 0 ; i < this.lista.length ; i++){
       let produto = {
         id: this.lista[i].id,
-        nameProduct: this.lista[i].nomeProduto,
-        amount: this.lista[i].quantidadeFutura
+        nomeProduto: this.lista[i].nomeProduto,
+        quantidadeProduto: this.lista[i].quantidadeFutura,
+        precoProduto: this.lista[i].precoProduto
       }
       this.produtoService.saveMov(produto.id, produto)
     }

@@ -11,9 +11,9 @@ import { IProduto } from 'src/app/Produto'
 export class CadastrarProdutoComponent implements OnInit {
 
   produto: IProduto = {
-    nameProduct: '',
-    amount: '',
-    priceProduct: ''
+    nomeProduto: '',
+    quantidadeProduto: '',
+    precoProduto: ''
   };
 
   constructor(

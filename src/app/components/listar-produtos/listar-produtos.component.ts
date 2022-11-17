@@ -35,6 +35,6 @@ export class ListarProdutosComponent implements OnInit {
     const target = e.target as HTMLInputElement
     const value = target.value
     this.produtos = this.allProducts.filter(x =>
-      x.nameProduct.trim().toLowerCase().includes(value.trim().toLowerCase())
+      x.nomeProduto.trim().toLowerCase().includes(value.trim().toLowerCase())
    )}
 }
