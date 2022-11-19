@@ -1,3 +1,4 @@
+import { AppComponent } from './../../app.component';
 import { Pedido } from './../../Pedido';
 import { PedidoService } from './../../services/pedido.service';
 import { Component, OnInit } from '@angular/core';
@@ -15,7 +16,9 @@ export class HomeComponent implements OnInit {
   faturamentoFormatado!:String
   totalProdutos = 0
 
-  constructor(private pedidoService:PedidoService, private produtoService:ProductServiceService) { }
+  constructor(private pedidoService:PedidoService,
+              private produtoService:ProductServiceService,
+              private appComponent:AppComponent) { }
 
   ngOnInit(): void {
     this.getFaturamento()
@@ -31,7 +34,7 @@ export class HomeComponent implements OnInit {
         this.faturamentoFormatado = this.faturamento.toFixed(2)
       }
     })
-    
+
   }
 
   getProdutos(){
