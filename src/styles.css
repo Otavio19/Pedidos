@@ -30,3 +30,54 @@ body
   margin: auto;
   margin-bottom: 2rem;
 }
+
+
+/* INPUTs */
+
+.inputBox
+{
+  display: inline-block;
+  position: relative;
+  width: 15rem;
+  height: 2.5rem;
+  margin-right: 2rem;
+  margin-bottom: 2rem;
+}
+
+.inputBox label
+{
+  color: #002333;
+  width: 100%;
+  display: inline-block;
+  transition: 0.4s;
+}
+
+.inputBox input
+{
+  display: block;
+  width: 100%;
+  border:none;
+  border-bottom: #002333 1px solid;
+  font-size: 1.1rem;
+  padding-left: 0.4rem;
+  outline: none;
+  transition: 0.5s;
+  margin-top: 0.5rem;
+  position: absolute;
+  background-color: transparent;
+  font-size: 1rem;
+}
+
+.inputBox input:valid ~ label,
+.inputBox input:focus ~ label
+{
+  color:  #159A9C;
+  transform: translateY(-1.3rem);
+  font-size: 0.8rem;
+}
+
+.inputBox input:valid,
+.inputBox input:focus
+{
+  border-bottom: 1px solid  #159A9C;
+}

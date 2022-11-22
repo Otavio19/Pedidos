@@ -1,0 +1,29 @@
+<div class="section">
+  <div class="loginBox">
+    <div class="loginForm">
+      <div class="titleBox">
+        <h1 class="title">Login</h1>
+      </div>
+
+      <form autocomplete="off">
+        <div class="inputBox">
+          <input
+          type="text"
+          name="quantidadeEstoque"
+          required="required"
+          [(ngModel)]="login.email">
+          <label for="">Login</label>
+        </div>
+
+        <div class="inputBox">
+          <input
+          type="password"
+          name="quantidadeEstoque"
+          required="required"
+          [(ngModel)]="login.password">
+          <label for="">Senha</label>
+        </div>
+        <button (click)="gerarToken()"> Acessar</button>
+      </form>
+    </div>
+</div>

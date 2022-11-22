@@ -1,3 +1,4 @@
+import { LoginComponent } from './components/login/login.component';
 import { ClienteComponent } from './components/pages/cliente/cliente.component';
 import { CadastrarClienteComponent } from './components/cadastrar-cliente/cadastrar-cliente.component';
 import { ListarClientesComponent } from './components/listar-clientes/listar-clientes.component';
@@ -23,7 +24,8 @@ const routes: Routes = [
   {path:'pedido',component: PedidoComponent},
   {path:'pedidos',component:PedidosComponent},
   {path: 'pages/ver-pedido/:id', component:VerPedidoComponent},
-  {path: 'relatorios/relatorio-pedidos', component: RelatorioPedidosComponent}
+  {path: 'relatorios/relatorio-pedidos', component: RelatorioPedidosComponent},
+  {path: 'login', component: LoginComponent}
 ];
 
 @NgModule({

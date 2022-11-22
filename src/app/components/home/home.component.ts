@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.getFaturamento()
     this.getProdutos()
+    localStorage.setItem('token','eyJhbGciOiJBMjU2S1ciLCJlbmMiOiJBMjU2Q0JDLUhTNTEyIiwiemlwIjoiREVGIn0.jP8NvJICppjJnhUM4-RZ44eLTkc4DidZ3-AET8UQlc_Virh2xKE7jcnMrq9mxrLhcinoaCgcveqjMZ45c9W3RtEXwg7iUWbP.-WbT_oSl8IRIOa8abaBcAw.sFjEVi_0LHvz_NSxbYFWYBMFwiWZJyR_MTfD7XC-aJhVct912IKd7paISNcu_daaOZClXKAYN6_1Mau23TvBgTKkYP5LCEdz706on_m0C9KsFCRvmks3-b_xZYbkhtSi6U1yZcJDyGvLnKLb2oyVhmS0O8aZ71cjItCeLTpVF6c.ZR-4NHsoTIkI00j9UUphKkiawBm7IIGgqQ-kIeedvDI')
   }
 
 

@@ -12,4 +12,9 @@ export class NavBarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  deslogar(){
+    localStorage.clear()
+    location.reload()
+    console.log('teste')
+  }
 }
