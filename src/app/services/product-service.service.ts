@@ -12,7 +12,7 @@ export class ProductServiceService {
 
   //private urlApi = 'https://62d87c1890883139359173dd.mockapi.io/produto';
   private urlApi= 'https://x8ki-letl-twmt.n7.xano.io/api:Az8xGr_h/Produtos';
-  private token = localStorage.getItem('token')
+  private token = sessionStorage.getItem('token')
   private tokenString = String(this.token)
   private tokenCerto = this.tokenString.split('"')
   private head_obj = new HttpHeaders().set('Authorization','bearer '+ this.tokenCerto[3])
@@ -20,7 +20,7 @@ export class ProductServiceService {
   constructor( private http : HttpClient) {}
 
   getAll():Observable<IProduto[]>{
-    return this.http.get<IProduto[]>(this.urlApi, {headers:(this.head_obj)});
+    return this.http.get<IProduto[]>(this.urlApi, { headers : this.head_obj });
   }
 
   getById(id:number){

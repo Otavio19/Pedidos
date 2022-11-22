@@ -8,7 +8,7 @@ import { ProductServiceService } from './services/product-service.service';
 })
 export class AppComponent {
   title = 'pedidos';
-  userLogged = localStorage.getItem('userLogged')
+  userLogged = sessionStorage.getItem('userLogged')
   constructor(private productService:ProductServiceService){
 
   }

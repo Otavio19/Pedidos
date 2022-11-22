@@ -25,9 +25,9 @@ export class LoginComponent implements OnInit {
     this.authService.gerarToken(this.login).subscribe(dado =>{
       console.log('Conta encontrada')
       let token = JSON.stringify(dado)
-      console.log(String(dado))
-      localStorage.setItem('token', token)
-      localStorage.setItem('userLogged','true')
+      sessionStorage.setItem('token', token)
+      sessionStorage.setItem('userLogged','true')
+      this.recuperarConta()
       location.reload()
     },
     erro => {
@@ -35,6 +35,12 @@ export class LoginComponent implements OnInit {
         console.log('Conta não encontrada')
         this.msgErro = 'Conta não encontrada'
       }
+    })
+  }
+
+  recuperarConta(){
+    this.authService.recuperarDados().subscribe(dado => {
+      console.log(dado)
     })
   }
 }

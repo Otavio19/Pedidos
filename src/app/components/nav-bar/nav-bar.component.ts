@@ -13,7 +13,7 @@ export class NavBarComponent implements OnInit {
   }
 
   deslogar(){
-    localStorage.clear()
+    sessionStorage.clear()
     location.reload()
     console.log('teste')
   }
