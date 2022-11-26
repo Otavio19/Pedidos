@@ -20,6 +20,7 @@ export class AuthService {
   }
 
   recuperarDados(){
-    return this.http.get(`${this.urlApi}me`,{ headers : this.head_obj })
+    //return this.http.get(`${this.urlApi}me`,{ headers : this.head_obj })
+    console.log(this.tokenCerto)
   }
 }

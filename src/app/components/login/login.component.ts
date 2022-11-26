@@ -27,20 +27,13 @@ export class LoginComponent implements OnInit {
       let token = JSON.stringify(dado)
       sessionStorage.setItem('token', token)
       sessionStorage.setItem('userLogged','true')
-      this.recuperarConta()
-      location.reload()
+      //location.reload()
     },
     erro => {
       if(erro.status == 400){
         console.log('Conta não encontrada')
         this.msgErro = 'Conta não encontrada'
       }
-    })
-  }
-
-  recuperarConta(){
-    this.authService.recuperarDados().subscribe(dado => {
-      console.log(dado)
     })
   }
 }
