@@ -2,8 +2,10 @@ import { compileNgModule } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { faThList } from '@fortawesome/free-solid-svg-icons';
 import { delay, Observable, timeout } from 'rxjs';
+import { Conta } from 'src/app/Conta';
 import { Pedido } from 'src/app/Pedido';
 import { IProduto } from 'src/app/Produto'
+import { AuthService } from 'src/app/services/auth.service';
 import { PedidoService } from 'src/app/services/pedido.service';
 import { ProductServiceService } from 'src/app/services/product-service.service';
 
@@ -13,6 +15,8 @@ import { ProductServiceService } from 'src/app/services/product-service.service'
   styleUrls: ['./pedido.component.css']
 })
 export class PedidoComponent implements OnInit {
+
+  conta:Conta = JSON.parse(sessionStorage.getItem('Conta')!)
 
   opcProdutos!: IProduto[]
 
@@ -29,20 +33,29 @@ export class PedidoComponent implements OnInit {
     clientePedido: '',
     vendedorPedido: '',
     produtosPedido: this.produtos,
-    valorPedido: ''
+    valorPedido: '',
+    empresa_id: this.conta.empresa_id
   }
 
   display ='none'
 
-  constructor(private pedidoService:PedidoService, private produtoService:ProductServiceService) { }
+  constructor(private pedidoService:PedidoService, 
+              private produtoService:ProductServiceService,
+              private authService:AuthService) { }
 
   ngOnInit(): void {
-    this.pedidoService.getAllPedidos().subscribe(dado => console.log(dado))
     this.getProducts()
+    this.getDados()
   }
 
   getProducts():void{
     this.produtoService.getAll().subscribe(dado => this.opcProdutos = dado)
+   }
+
+   getDados(){
+    this.authService.recuperarDados().subscribe(dados =>{
+      this.pedido.vendedorPedido = dados.name
+    })
    }
 
   adcProduto(){
@@ -93,7 +106,16 @@ export class PedidoComponent implements OnInit {
       })
     }
 
-    this.pedidoService.createPedido(this.pedido).subscribe()
+    if(this.pedido.produtosPedido !== null){
+      this.pedidoService.createPedido(this.pedido).subscribe(sucess =>{
+        console.log('Pedido Cadastrado')
+        location.assign('pedidos')
+      },
+      err =>{
+        console.log('Pedido não Cadastrado')
+      })
+    }
+    
    }
 
    fecharPopUp(){

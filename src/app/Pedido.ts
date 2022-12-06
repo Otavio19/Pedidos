@@ -5,5 +5,6 @@ export interface Pedido{
     clientePedido?: String,
     vendedorPedido?: String,
     produtosPedido?: IProduto[],
-    valorPedido?: String
+    valorPedido?: String,
+    empresa_id?: number
 }

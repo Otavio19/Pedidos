@@ -1,4 +1,4 @@
-<div *ngIf="userLogged == 'true'; else login">
+<div *ngIf="userLogged != undefined || userLogged != null; else login">
   <app-nav-bar></app-nav-bar>
 </div>
 <ng-template #login>

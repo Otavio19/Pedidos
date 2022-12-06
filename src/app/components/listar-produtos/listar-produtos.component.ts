@@ -2,6 +2,7 @@ import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { ProductServiceService } from 'src/app/services/product-service.service'
 import { IProduto } from 'src/app/Produto'
+import { Conta } from 'src/app/Conta';
 
 
 @Component({
@@ -27,8 +28,6 @@ export class ListarProdutosComponent implements OnInit {
         this.produtos.push(dado[i])
       }
     })
-
-    console.log(this.allProducts)
    }
 
    search(e : Event):void{

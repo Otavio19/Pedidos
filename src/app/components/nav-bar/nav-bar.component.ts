@@ -15,6 +15,5 @@ export class NavBarComponent implements OnInit {
   deslogar(){
     sessionStorage.clear()
     location.reload()
-    console.log('teste')
   }
 }

@@ -1,6 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Auth } from '../Auth';
+import { map } from 'rxjs/operators'
+import { Observable } from 'rxjs';
+import { Conta } from '../Conta';
 
 @Injectable({
   providedIn: 'root'
@@ -16,11 +19,18 @@ export class AuthService {
   constructor(private http : HttpClient) { }
 
   gerarToken(login:Auth){
-    return this.http.post(`${this.urlApi}login`, login)
+    return this.http.post(`${this.urlApi}login`, login,{responseType:'json'}).pipe(
+      map(data => {
+        sessionStorage.setItem('token',JSON.stringify(data))
+      })
+    )
   }
 
-  recuperarDados(){
-    //return this.http.get(`${this.urlApi}me`,{ headers : this.head_obj })
-    console.log(this.tokenCerto)
+  recuperarDados():Observable<Conta>{
+    return this.http.get<Conta>(`${this.urlApi}me`,{ headers : this.head_obj })
+  }
+
+  registrarConta(conta:Auth){
+    return this.http.post(`${this.urlApi}signup`,conta)
   }
 }

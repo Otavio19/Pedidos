@@ -1,29 +1,85 @@
-<div class="section">
-  <div class="loginBox">
-    <div class="loginForm">
-      <div class="titleBox">
-        <h1 class="title">Login</h1>
-      </div>
-
-      <form autocomplete="off">
+<section class="acess">
+  
+  <div class="containerAcess">
+    <div class="boxLogin">
+      
+      <form action="" class="formLogin" autocomplete="off">
+        <h1 class="titleLogin">Login</h1>
         <div class="inputBox">
           <input
           type="text"
-          name="quantidadeEstoque"
+          name="email"
           required="required"
           [(ngModel)]="login.email">
-          <label for="">Login</label>
+          <label for="">E-mail</label>
         </div>
 
         <div class="inputBox">
           <input
           type="password"
-          name="quantidadeEstoque"
+          name="password"
           required="required"
           [(ngModel)]="login.password">
           <label for="">Senha</label>
         </div>
-        <button (click)="gerarToken()"> Acessar</button>
+
+        <button class="btnLogin" (click)="gerarToken()">Acessar</button>
+        <label for="maskLado" class="subMudarLado">Não possui cadastro? Clique aqui</label>
+      </form>
+      
+    </div>
+
+
+    <div class="boxRegister">
+
+      <form action="" class="formLogin" autocomplete="off">
+        <h1 class="titleLogin">Registrar-se</h1>
+        <div class="inputBox">
+          <input
+          type="text"
+          name="password"
+          required="required"
+          [(ngModel)]="registrar.name">
+          <label for="">Nome Completo</label>
+          <h6 class="lblWarning">{{lblName}}</h6>
+        </div>
+        <div class="inputBox">
+          <input
+          type="text"
+          name="email"
+          required="required"
+          [(ngModel)]="registrar.email">
+          <label for="">E-mail</label>
+          <h6 class="lblWarning">{{lblEmail}}</h6>
+        </div>
+
+        <div class="inputBox">
+          <input
+          type="text"
+          name="password"
+          required="required"
+          [(ngModel)]="registrar.password">
+          <label for="">Senha</label>
+          <h6 class="lblWarning">{{lblPassword}}</h6>
+        </div>
+
+        <div class="inputBox">
+          <input
+          type="text"
+          name="password"
+          required="required"
+          [(ngModel)]="confirmPassword">
+          <label for="">Repetir Senha</label>
+          <h6 class="lblWarning">{{lblPassword}}</h6>
+        </div>
+
+        <button class="btnLogin" (click)="registrarConta()">Registrar-se</button>
+        <label for="maskLado" class="subMudarLado">Já possui cadastro? Clique aqui</label>
       </form>
     </div>
-</div>
+    <input type="checkbox" id="maskLado">
+    <div class="maskAcess">
+      
+    </div>
+  </div>
+</section>

@@ -14,26 +14,63 @@ export class LoginComponent implements OnInit {
     password : ''
   }
 
-  msgErro = 'ds'
+  registrar:Auth = {
+    name : '',
+    email : '',
+    password : ''
+  }
+
+  confirmPassword = ''
+
+  lblName = ''
+  lblEmail = ''
+  lblPassword = ''
 
   constructor(private authService: AuthService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   gerarToken(){
-    this.authService.gerarToken(this.login).subscribe(dado =>{
-      console.log('Conta encontrada')
-      let token = JSON.stringify(dado)
-      sessionStorage.setItem('token', token)
-      sessionStorage.setItem('userLogged','true')
-      //location.reload()
+    this.authService.gerarToken(this.login).subscribe(sucess =>{
+      this.authService.recuperarDados().subscribe(dados =>{
+        console.log(dados)
+        sessionStorage.setItem('Conta',JSON.stringify(dados))
+        sessionStorage.setItem('userLogged','true')
+        location.assign('')
+      })
     },
-    erro => {
-      if(erro.status == 400){
-        console.log('Conta não encontrada')
-        this.msgErro = 'Conta não encontrada'
-      }
+    err =>{
+      console.log('Conta não encontrada')
     })
+  }
+
+  registrarConta(){
+    if(this.registrar.name != ''){
+      if(this.registrar.email != ''){
+        if(this.registrar.password != '' && this.registrar.password == this.confirmPassword){
+          this.authService.registrarConta(this.registrar).subscribe(sucess => {
+            console.log(sucess)
+            location.reload()
+          }, err =>{
+            console.log(err)
+            this.lblPassword = 'Deve conter pelo menos uma Letra e 8 digitos.'
+          })
+          console.log('Conta registrada!')
+          this.lblEmail = ''
+          this.lblName = ''
+          this.lblPassword = ''
+          console.log(this.registrar)
+        } else{
+          console.log('Senhas não conferem!')
+          this.lblPassword = 'Senhas não conferem'
+        }
+      } else{
+        console.log('Por gentileza informe seu E-mail')
+        this.lblEmail = 'Por gentileza informe seu E-mail'
+      }
+    } else{
+      console.log('Por gentileza informe seu Nome')
+      this.lblName = 'Por gentileza informe seu Nome'
+    }
   }
 }
