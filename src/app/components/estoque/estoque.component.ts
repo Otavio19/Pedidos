@@ -41,7 +41,8 @@ export class EstoqueComponent implements OnInit {
         'tipo' : this.formulario.tipo,
         'quantidadeAtual' : retorno.quantidadeProduto,
         'quantidadeFutura' : Number(retorno.quantidadeProduto) + Number(this.formulario.quantidade),
-        'precoProduto': retorno.precoProduto
+        'precoProduto': retorno.precoProduto,
+        'empresa_id': retorno.empresa_id
       }))
     } if(this.formulario.tipo == "Saida"){
       return this.produtoService.getById(id).subscribe(retorno => this.lista.push({
@@ -50,7 +51,8 @@ export class EstoqueComponent implements OnInit {
         'tipo' : this.formulario.tipo,
         'quantidadeAtual' : retorno.quantidadeProduto,
         'quantidadeFutura' : Number(retorno.quantidadeProduto) - Number(this.formulario.quantidade),
-        'precoProduto': retorno.precoProduto
+        'precoProduto': retorno.precoProduto,
+        'empresa_id': retorno.empresa_id
       }))
     } return this.produtoService.getById(id).subscribe(retorno => this.lista.push({
       'id' : retorno.id,
@@ -58,7 +60,8 @@ export class EstoqueComponent implements OnInit {
       'tipo' : this.formulario.tipo,
       'quantidadeAtual' : retorno.quantidadeProduto,
       'quantidadeFutura' : Number(this.formulario.quantidade),
-      'precoProduto': retorno.precoProduto
+      'precoProduto': retorno.precoProduto,
+      'empresa_id': retorno.empresa_id
     }))
    }
 
@@ -78,7 +81,8 @@ export class EstoqueComponent implements OnInit {
         id: this.lista[i].id,
         nomeProduto: this.lista[i].nomeProduto,
         quantidadeProduto: this.lista[i].quantidadeFutura,
-        precoProduto: this.lista[i].precoProduto
+        precoProduto: this.lista[i].precoProduto,
+        empresa_id: this.lista[i].empresa_id
       }
       this.produtoService.saveMov(produto.id, produto)
     }
