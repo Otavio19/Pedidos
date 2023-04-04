@@ -1,13 +1,17 @@
 import { compileNgModule } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { faThList } from '@fortawesome/free-solid-svg-icons';
-import { delay, Observable, timeout } from 'rxjs';
-import { Conta } from 'src/app/Conta';
+import { delay, first, Observable, timeout } from 'rxjs';
+import { Usuario } from 'src/app/Usuario';
 import { Pedido } from 'src/app/Pedido';
 import { IProduto } from 'src/app/Produto'
 import { AuthService } from 'src/app/services/auth.service';
 import { PedidoService } from 'src/app/services/pedido.service';
 import { ProductServiceService } from 'src/app/services/product-service.service';
+
+import { v4 as uuidv4 } from 'uuid';
+import { ClientServiceService } from 'src/app/services/client-service.service';
+import { ICliente } from 'src/app/Cliente';
 
 @Component({
   selector: 'app-pedido',
@@ -16,24 +20,26 @@ import { ProductServiceService } from 'src/app/services/product-service.service'
 })
 export class PedidoComponent implements OnInit {
 
-  conta:Conta = JSON.parse(sessionStorage.getItem('Conta')!)
+  conta:Usuario = JSON.parse(sessionStorage.getItem('Usuario')!)
 
   opcProdutos!: IProduto[]
 
   produtos:  IProduto[] = []
 
+  clientes!: ICliente[]
+
   produto: IProduto = {
     id: 0,
-    nomeProduto: '',
-    quantidadeProduto: '',
-    precoProduto: ''
+    name: '',
+    amount: 0,
+    price: ''
   }
 
   pedido: Pedido = {
-    clientePedido: '',
-    vendedorPedido: '',
-    produtosPedido: this.produtos,
-    valorPedido: '',
+    cliente_name: '',
+    reponsavel_name: '',
+    product: this.produtos,
+    price: '',
     empresa_id: this.conta.empresa_id
   }
 
@@ -41,21 +47,33 @@ export class PedidoComponent implements OnInit {
 
   constructor(private pedidoService:PedidoService, 
               private produtoService:ProductServiceService,
-              private authService:AuthService) { }
+              private authService:AuthService,
+              private clienteService: ClientServiceService) { }
 
   ngOnInit(): void {
     this.getProducts()
     this.getDados()
+    this.getClients()
   }
 
   getProducts():void{
-    this.produtoService.getAll().subscribe(dado => this.opcProdutos = dado)
+    this.produtoService.getAll().subscribe(dado =>
+      {
+        this.opcProdutos = dado
+      })
+   }
+
+   getClients()
+   {
+    this.clienteService.getAllClient().subscribe(dado => this.clientes = dado)
    }
 
    getDados(){
-    this.authService.recuperarDados().subscribe(dados =>{
-      this.pedido.vendedorPedido = dados.name
-    })
+    var name = this.authService.recuperarDados().nome.split(" ")
+    var first_name = name[0]
+    var second_name = name[1][0]
+    this.pedido.reponsavel_name = first_name + " " + second_name + "."
+    console.log(name)
    }
 
   adcProduto(){
@@ -65,57 +83,35 @@ export class PedidoComponent implements OnInit {
       let found = this.produtos.find(element => element.id == dado.id)
        if(found == undefined){
         this.produtos.unshift(produtoUm = {
-          id: dado.id,
-          nomeProduto : dado.nomeProduto,
-          quantidadeProduto : this.produto.quantidadeProduto,
-          precoProduto: String(Number(dado.precoProduto) * Number(this.produto.quantidadeProduto))
+          idGuia : dado.id,
+          name : dado.name,
+          amount : this.produto.amount,
+          price: String(Number(dado.price) * Number(this.produto.amount))
         })
 
-        this.pedido.valorPedido = String(Number(Number(this.pedido.valorPedido)+Number(produtoUm.precoProduto)).toFixed(2))
+        this.pedido.price = String(Number(Number(this.pedido.price)+Number(produtoUm.price)).toFixed(2))
       } else{
         this.display = 'block'
       }
     })
   }
 
+  savePedido()
+  {
+    this.pedidoService.createPedido(this.pedido).subscribe(sucess => {
+      location.assign('/pedidos')
+    }, err =>{
+      console.log(err)
+    })
+  }
+
   deletProduct(name:any){
     let index = this.produtos.indexOf(name)
 
-    let aux = this.produtos[index].precoProduto
-    this.pedido.valorPedido = String(Number(Number(this.pedido.valorPedido) - Number(aux)).toFixed(2))
+    let aux = this.produtos[index].price
+    this.pedido.price = String(Number(Number(this.pedido.price) - Number(aux)).toFixed(2))
     this.produtos.splice(index,1)
-    console.log('Valor do pedido: '+this.pedido.valorPedido)
-   }
-
-   adcPedido(){
-    for(let i = 0 ; i < this.produtos.length ; i++){
-
-      this.produtoService.getById(Number(this.produtos[i].id)).subscribe(dado =>{
-        let novaMov = Number(dado.quantidadeProduto) - Number(this.produtos[i].quantidadeProduto)
-
-        console.log('Produto: '+this.produtos[i].nomeProduto + "|| Nova mov: "+ novaMov)
-
-        let produtos = {
-          id: this.produtos[i].id,
-          nomeProduto: this.produtos[i].nomeProduto,
-          quantidadeProduto: novaMov,
-          precoProduto: dado.precoProduto
-        }
-
-        this.produtoService.saveMov(Number(this.produtos[i].id), produtos)
-      })
-    }
-
-    if(this.pedido.produtosPedido !== null){
-      this.pedidoService.createPedido(this.pedido).subscribe(sucess =>{
-        console.log('Pedido Cadastrado')
-        location.assign('pedidos')
-      },
-      err =>{
-        console.log('Pedido não Cadastrado')
-      })
-    }
-    
+    console.log('Valor do pedido: '+this.pedido.price)
    }
 
    fecharPopUp(){

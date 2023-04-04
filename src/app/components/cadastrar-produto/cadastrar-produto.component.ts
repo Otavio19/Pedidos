@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { IProduto } from 'src/app/Produto'
 import { ListarProdutosComponent } from '../listar-produtos/listar-produtos.component';
-import { Conta } from 'src/app/Conta';
+import { Usuario } from 'src/app/Usuario';
 
 @Component({
   selector: 'app-cadastrar-produto',
@@ -13,21 +13,16 @@ import { Conta } from 'src/app/Conta';
 export class CadastrarProdutoComponent implements OnInit {
 
   
-  conta:Conta = JSON.parse(sessionStorage.getItem('Conta')!)
+  conta:Usuario = JSON.parse(sessionStorage.getItem('Conta')!)
   
-  produto: IProduto = {
-    nomeProduto: '',
-    quantidadeProduto: '',
-    precoProduto: '',
-    empresa_id: this.conta.empresa_id
-  };
+  produto!: IProduto
 
-  constructor(private service:ProductServiceService) { }
+  constructor(private http:ProductServiceService) { }
 
   ngOnInit(): void {}
 
-  cadastrarProduto(){
-    if(this.produto.nomeProduto != ''){
+  /* cadastrarProduto(){
+    if(this.produto.Name != ''){
       return this.service.createProduct(this.produto).subscribe(sucess =>{
         console.log('Produto Cadastrado com sucesso!')
         location.assign('/listar-produtos')
@@ -37,5 +32,12 @@ export class CadastrarProdutoComponent implements OnInit {
       })
     }
   return console.log('Verifique os campos')
+  } */
+
+  cadastrarProduto(name:string,amount:string ,price:string)
+  {
+    var amountInt = Number(amount)
+    this.produto = {name : name, amount : amountInt, price : price}
+    this.http.createProduct(this.produto).subscribe()
   }
 }

@@ -10,17 +10,24 @@
           <input  type="text"
                   id="clientePedido"
                   name="clientePedido"
-                  [(ngModel)]="pedido.clientePedido"
+                  [(ngModel)]="pedido.cliente_name"
                   required="required"
+                  list="clienteNome"
             >
           <label>Cliente</label>
+
+          <datalist id="clienteNome">
+            <option *ngFor="let nomeCliente of clientes">
+              {{nomeCliente.name}}
+            </option>
+          </datalist>
         </div>
 
         <div class="inputBox">
             <input type="text"
                 id="vendedorPedido"
                 name="vendedorPedido"
-                [(ngModel)]="pedido.vendedorPedido"
+                [(ngModel)]="pedido.reponsavel_name"
                 required="required"
             >
           <label for="">Vendedor</label>
@@ -37,7 +44,7 @@
 
             <datalist id="produtosNome">
                 <option *ngFor="let nomeProdutos of opcProdutos"  [value]="nomeProdutos.id">
-                  {{nomeProdutos.nomeProduto}} || {{nomeProdutos.precoProduto}}$
+                  {{nomeProdutos.name}} || {{nomeProdutos.price}}$
                 </option>
               </datalist>
         </div>
@@ -47,7 +54,7 @@
                 min="1"
                 id="quantidadePedido"
                 name="amount"
-                [(ngModel)]="produto.quantidadeProduto"
+                [(ngModel)]="produto.amount"
                 required="required"
             >
             <label>Quantidade</label>
@@ -55,14 +62,14 @@
 
         <div class="buttons">
             <button (click)="adcProduto()">Adicionar Produto</button>
-            <button (click)="adcPedido()">Salvar Pedido</button>
+            <button (click)="savePedido()">Salvar Pedido</button>
             <button routerLink="../pedidos">Cancelar</button>
         </div>
 
     </form>
 
     <div class="valorPedido">
-        TOTAL: {{pedido.valorPedido}}
+        TOTAL: {{pedido.price}}
     </div>
 
     <table>
@@ -75,10 +82,10 @@
           </thead>
           <tbody>
             <tr *ngFor="let produtos of produtos">
-              <td>{{produtos.id}}</td>
-              <td>{{produtos.nomeProduto}}</td>
-              <td>{{produtos.quantidadeProduto}}</td>
-              <td>{{produtos.precoProduto}}</td>
+              <td>{{produtos.idGuia}}</td>
+              <td>{{produtos.name}}</td>
+              <td>{{produtos.amount}}</td>
+              <td>{{produtos.price}}</td>
               <td>
                 <button (click)="deletProduct(produtos)">Apagar</button>
               </td>

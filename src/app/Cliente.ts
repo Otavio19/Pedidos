@@ -1,4 +1,5 @@
-export interface ICliente {
+export interface ICliente{
   id?: Number,
-  nomeCliente: String
+  name: String,
+  company_id? : number
 }

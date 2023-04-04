@@ -19,7 +19,6 @@ export class PedidosComponent implements OnInit {
         this.pedidos.unshift(dado[i])
       }
     })
-    console.log(this.pedidos)
   }
 
 }

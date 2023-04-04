@@ -3,42 +3,50 @@ import { Injectable } from '@angular/core';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { parse } from '@fortawesome/fontawesome-svg-core';
-import { Conta } from '../Conta';
+import { Usuario } from '../Usuario';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductServiceService {
 
-  //private urlApi = 'https://62d87c1890883139359173dd.mockapi.io/produto';
-  private urlApi= 'https://x8ki-letl-twmt.n7.xano.io/api:Az8xGr_h/Produtos';
-  private urlApiProdutoEmpresa = 'https://x8ki-letl-twmt.n7.xano.io/api:C7hm_OI1/Produtos_empresa'
-  private token = sessionStorage.getItem('token')
-  private tokenString = String(this.token)
-  private tokenCerto = this.tokenString.split('"')
-  private head_obj = new HttpHeaders().set('Authorization','bearer '+ this.tokenCerto[3])
+  urlApi = "https://localhost:7123/produto"
 
+  private tokenString = sessionStorage.getItem("Usuario") ?? "123"
+
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      'Authorization' : `Bearer ${JSON.parse(this.tokenString).token}`
+    })
+  };
+
+  
   constructor( private http : HttpClient) {}
 
   getAll():Observable<IProduto[]>{
-    return this.http.get<IProduto[]>(`${this.urlApiProdutoEmpresa}/${this.getConta()}`, { headers : this.head_obj });
+    return this.http.get<IProduto[]>(this.urlApi, this.httpOptions);
   }
 
-  getById(id:number){
-    return this.http.get<IProduto>(`${this.urlApi}/${id}`);
+  getById(id:number):Observable<IProduto>{
+
+    return this.http.get<IProduto>(`${this.urlApi}/${id}`, this.httpOptions);
   }
 
   createProduct(produto: IProduto):Observable<IProduto>{
-    return this.http.post<IProduto>(this.urlApi, produto, { headers : this.head_obj }).pipe()
+    return this.http.post<IProduto>(this.urlApi, produto, this.httpOptions)
   }
 
   saveMov(id:Number, valor:any){
-    return this.http.put(`${this.urlApi}/${id}`,valor).subscribe(retorno => console.log("Produto atualizados com sucesso."))
+    return this.http.put(`${this.urlApi}/${id}`,valor, this.httpOptions).subscribe(retorno => console.log("Produto atualizados com sucesso."))
   }
 
   private getConta(){
-    let conta:Conta = JSON.parse(sessionStorage.getItem('Conta')!)
+    let conta:Usuario = JSON.parse(sessionStorage.getItem('Conta')!)
     return conta.empresa_id
    }
+
+   getAllProduct():Observable<IProduto[]>{
+    return this.http.get<IProduto[]>(this.urlApi, this.httpOptions);
+  }
 }

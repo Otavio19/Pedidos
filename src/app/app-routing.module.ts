@@ -12,6 +12,7 @@ import { PedidoComponent } from './components/pedido/pedido.component';
 import { PedidosComponent } from './components/pedidos/pedidos.component';
 import { VerPedidoComponent } from './components/pages/ver-pedido/ver-pedido.component';
 import { RelatorioPedidosComponent } from './components/relatorios/relatorio-pedidos/relatorio-pedidos.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
 
 const routes: Routes = [
   {path:'', component: HomeComponent},
@@ -25,7 +26,8 @@ const routes: Routes = [
   {path:'pedidos',component:PedidosComponent},
   {path: 'pages/ver-pedido/:id', component:VerPedidoComponent},
   {path: 'relatorios/relatorio-pedidos', component: RelatorioPedidosComponent},
-  {path: 'login', component: LoginComponent}
+  {path: 'login', component: LoginComponent},
+  {path: 'perfil', component: PerfilComponent}
 ];
 
 @NgModule({

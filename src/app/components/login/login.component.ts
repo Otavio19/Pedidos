@@ -1,6 +1,7 @@
 import { Auth } from './../../Auth';
 import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
+import { Usuario } from 'src/app/Usuario';
 
 @Component({
   selector: 'app-login',
@@ -9,68 +10,62 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  login:Auth = {
-    email : '',
-    password : ''
-  }
+  aux : any;
+  login! : Auth
 
-  registrar:Auth = {
-    name : '',
-    email : '',
-    password : ''
-  }
-
-  confirmPassword = ''
-
-  lblName = ''
-  lblEmail = ''
-  lblPassword = ''
+  usuario! : Usuario
 
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {}
 
-  gerarToken(){
-    this.authService.gerarToken(this.login).subscribe(sucess =>{
-      this.authService.recuperarDados().subscribe(dados =>{
-        console.log(dados)
-        sessionStorage.setItem('Conta',JSON.stringify(dados))
-        sessionStorage.setItem('userLogged','true')
-        location.assign('')
-      })
-    },
-    err =>{
-      console.log('Conta não encontrada')
+  efetuarLogin(usuario:string, senha:string)
+  {
+    this.login = {
+      Email : usuario,
+      Senha : senha
+    }
+    this.authService.login(this.login).subscribe(sucess =>{
+      sessionStorage.setItem('Usuario',JSON.stringify(sucess))
+      sessionStorage.setItem('userLogged', 'true')
+      location.reload()
+    }, err =>{
+      console.log("Conta não encontrada!")
     })
   }
 
-  registrarConta(){
-    if(this.registrar.name != ''){
-      if(this.registrar.email != ''){
-        if(this.registrar.password != '' && this.registrar.password == this.confirmPassword){
-          this.authService.registrarConta(this.registrar).subscribe(sucess => {
-            console.log(sucess)
-            location.reload()
-          }, err =>{
-            console.log(err)
-            this.lblPassword = 'Deve conter pelo menos uma Letra e 8 digitos.'
-          })
-          console.log('Conta registrada!')
-          this.lblEmail = ''
-          this.lblName = ''
-          this.lblPassword = ''
-          console.log(this.registrar)
-        } else{
-          console.log('Senhas não conferem!')
-          this.lblPassword = 'Senhas não conferem'
-        }
-      } else{
-        console.log('Por gentileza informe seu E-mail')
-        this.lblEmail = 'Por gentileza informe seu E-mail'
-      }
-    } else{
-      console.log('Por gentileza informe seu Nome')
-      this.lblName = 'Por gentileza informe seu Nome'
+  efetuarRegistro(nome:string, email:string, senha:string,)
+  {
+    this.usuario = {
+      Email : email,
+      Senha : senha,
+      Nome : nome 
     }
+
+    this.authService.registrarConta(this.usuario).subscribe(sucess =>{
+      this.sucessLabel()
+    }, err =>{
+      this.errorLabel()
+    })
   }
+
+  //CSS DO Aviso:
+  sucessView = false;
+  errorView = false
+  sucessMessage = 'Registrado com sucesso!';
+
+  sucessLabel()
+  {
+    this.sucessView = true;
+    this.errorView = false
+    this.sucessMessage = 'Registrado com sucesso!';
+  }
+  
+  errorLabel()
+  {
+    this.errorView = true;
+    this.sucessView = false;
+    this.sucessMessage = 'Verifique os campos!';
+  }
+
 }

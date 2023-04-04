@@ -2,7 +2,7 @@ import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { ProductServiceService } from 'src/app/services/product-service.service'
 import { IProduto } from 'src/app/Produto'
-import { Conta } from 'src/app/Conta';
+import { Usuario } from 'src/app/Usuario';
 
 
 @Component({
@@ -15,18 +15,18 @@ export class ListarProdutosComponent implements OnInit {
    produtos : Array <any> = [];
 
   constructor( private productService : ProductServiceService) {
-    this.getProducts()
+    this.getAll()
   }
 
   ngOnInit(): void {
+    
    }
 
-   getProducts():void{
-    this.productService.getAll().subscribe(dado =>{
-      for(let i = 0 ; i < dado.length ; i++){
-        this.allProducts.push(dado[i])
-        this.produtos.push(dado[i])
-      }
+   getAll()
+   {
+    return this.productService.getAll().subscribe(p =>{
+      this.produtos = p
+      this.allProducts = p
     })
    }
 
@@ -34,6 +34,6 @@ export class ListarProdutosComponent implements OnInit {
     const target = e.target as HTMLInputElement
     const value = target.value
     this.produtos = this.allProducts.filter(x =>
-      x.nomeProduto.trim().toLowerCase().includes(value.trim().toLowerCase())
+      x.name.trim().toLowerCase().includes(value.trim().toLowerCase())
    )}
 }

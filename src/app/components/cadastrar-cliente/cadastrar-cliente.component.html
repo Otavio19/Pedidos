@@ -5,13 +5,14 @@
       <input
       type="text"
       name="nomeProduto"
-      [(ngModel)]="cliente.nomeCliente"
-      required="required">
+      required="required"
+      #name
+      >
       <label for="">Nome do Cliente</label>
     </div>
 
     <div class="buttons">
-      <button (click)="submit()" type="submit" routerLink="../listar-clientes">Salvar</button>
+      <button (click)="cadastrar(name.value)" type="submit" routerLink="../listar-clientes">Salvar</button>
       <button routerLink="../listar-clientes">Cancelar</button>
     </div>
   </form>

@@ -1,0 +1,22 @@
+.boxData
+{
+    border: 1px solid red;
+}
+
+.buttons
+{
+  position: absolute;
+  bottom: -1rem;
+}
+
+button
+{
+  margin-left:1rem;
+  border: 1px solid #002333;
+  font-size: 1.1rem;
+  padding: 0.3rem 1rem;
+  background-color:  #FFFFFF;
+  cursor: pointer;
+  color: #002333;
+  border-radius: 0.3rem;
+}

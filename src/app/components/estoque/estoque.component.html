@@ -12,7 +12,7 @@
         <label for="">Produto:</label>
         <datalist id="produtosNome">
           <option *ngFor="let nomeProdutos of produtos"  [value]="nomeProdutos.id">
-            {{nomeProdutos.nomeProduto}}
+            {{nomeProdutos.name}}
           </option>
         </datalist>
       </div>
@@ -55,12 +55,12 @@
         <th>Ação</th>
       </thead>
       <tbody>
-        <tr *ngFor="let produtos of lista">
-          <td>{{produtos.id}}</td>
-          <td>{{produtos.nomeProduto}}</td>
-          <td>{{produtos.tipo}}</td>
-          <td>{{produtos.quantidadeAtual}}</td>
-          <td>{{produtos.quantidadeFutura}}</td>
+        <tr *ngFor="let produto of listaProdutos">
+          <td>{{produto.Id}}</td>
+          <td>{{produto.Name}}</td>
+          <td>{{produto.tipo}}</td>
+          <td>{{produto.quantidadeAtual}}</td>
+          <td>{{produto.quantidadeFutura}}</td>
           <td>
             <button (click)="deletProduct(produtos)">Apagar</button>
           </td>

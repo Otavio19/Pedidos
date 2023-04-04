@@ -14,12 +14,10 @@ export class CadastrarClienteComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  cliente: ICliente = {
-    nomeCliente: ''
-  }
+  cliente!: ICliente
 
-  submit(){
+  cadastrar(name:string){
+    this.cliente = {name : name}
     this.clientService.createClient(this.cliente).subscribe()
   }
-
 }

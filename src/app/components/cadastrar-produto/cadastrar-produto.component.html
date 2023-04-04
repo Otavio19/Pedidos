@@ -5,8 +5,9 @@
       <input
         type="text"
         name="nomeProduto"
-        [(ngModel)]="produto.nomeProduto"
-        required="required">
+        required="required"
+        #name
+        >
         <label for="">Nome do Produto</label>
     </div>
 
@@ -14,9 +15,10 @@
         <input
         type="number"
         name="quantidadeEstoque"
-        [(ngModel)]="produto.quantidadeProduto"
         min="1"
-        required="required">
+        required="required"
+        #amount
+        >
         <label for="">Quantidade em Estoque</label>
     </div>
 
@@ -24,14 +26,15 @@
       <input
       type="number"
       name="quantidadeEstoque"
-      [(ngModel)]="produto.precoProduto"
       min="1"
-      required="required">
+      required="required"
+      #price
+      >
       <label for="">Valor</label>
     </div>
 
     <div class="buttons">
-      <button (click)="cadastrarProduto()" type="submit">Salvar</button>
+      <button type="submit" (click)="cadastrarProduto(name.value, amount.value, price.value)" routerLink="../listar-produtos"> Salvar </button>
       <button routerLink="../listar-produtos">Cancelar</button>
     </div>
   </form>

@@ -1,7 +1,10 @@
 export interface IProduto{
-  id?:number
-  nomeProduto:string,
-  quantidadeProduto:string,
-  precoProduto:String,
-  empresa_id?:number
+  id?:number,
+  idGuia?:number,
+  company_id?:number,
+  created_at?: String,
+  name:string,
+  active? : boolean;
+  amount:number,
+  price:String
 }

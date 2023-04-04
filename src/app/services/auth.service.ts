@@ -3,34 +3,40 @@ import { Injectable } from '@angular/core';
 import { Auth } from '../Auth';
 import { map } from 'rxjs/operators'
 import { Observable } from 'rxjs';
-import { Conta } from '../Conta';
+import { Usuario } from '../Usuario';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private urlApi = 'https://x8ki-letl-twmt.n7.xano.io/api:C7hm_OI1/auth/'
+  private urlApi = 'https://localhost:7123/usuario'
   private token = sessionStorage.getItem('token')
   private tokenString = String(this.token)
   private tokenCerto = this.tokenString.split('"')
-  private head_obj = new HttpHeaders().set('Authorization','bearer '+ this.tokenCerto[3])
+  //private head_obj = new HttpHeaders().set('Authorization','bearer '+ this.tokenCerto[3])
 
+  private dado = sessionStorage.getItem("Usuario") ?? "123"
+
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      'Authorization' : `Bearer ${JSON.parse(this.dado).token}`
+    })
+  };
+  
   constructor(private http : HttpClient) { }
 
-  gerarToken(login:Auth){
-    return this.http.post(`${this.urlApi}login`, login,{responseType:'json'}).pipe(
-      map(data => {
-        sessionStorage.setItem('token',JSON.stringify(data))
-      })
-    )
+  login(login:Auth):Observable<Auth>{
+    return this.http.post<Auth>(`${this.urlApi}/login`, login)
   }
 
-  recuperarDados():Observable<Conta>{
-    return this.http.get<Conta>(`${this.urlApi}me`,{ headers : this.head_obj })
+  recuperarDados(){
+    //return this.http.get<Usuario>(`${this.urlApi}`, this.httpOptions)
+    return JSON.parse(this.dado)
   }
 
   registrarConta(conta:Auth){
-    return this.http.post(`${this.urlApi}signup`,conta)
+    return this.http.post(`${this.urlApi}`,conta)
   }
 }

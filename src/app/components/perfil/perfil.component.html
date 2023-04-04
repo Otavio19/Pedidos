@@ -1,0 +1,46 @@
+<div class="main">
+    <h1> Olá {{nome}}</h1>
+    <hr>
+    <div>
+        <div class="inputBox">
+            <input
+            type="text"
+            name="quantidadeEstoque"
+            min="1"
+            required="required"
+            [(ngModel)]="usuario.Nome"
+            >
+            <label for="">Colaborador</label>
+        </div>
+    </div>
+    
+    <div>
+        <div class="inputBox">
+            <input
+            type="text"
+            name="quantidadeEstoque"
+            min="1"
+            required="required"
+            [(ngModel)]="usuario.Email"
+            >
+            <label for="">E-mail</label>
+        </div>
+    </div>
+
+    <div>
+        <div class="inputBox">
+            <input
+            type="text"
+            name="quantidadeEstoque"
+            min="1"
+            required="required"
+            [(ngModel)]="company"
+            >
+            <label for="">Empresa</label>
+        </div>
+    </div>
+    <div class="buttons">
+        <button>Salvar</button>
+    </div>
+    
+</div>

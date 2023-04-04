@@ -65,9 +65,9 @@ tr:hover{
   background-color: #159A9C;
 }
 
-datalist
+.testList
 {
-  width: 120rem;
+  border: 1px solid red;
 }
 
 /*MODAL*/

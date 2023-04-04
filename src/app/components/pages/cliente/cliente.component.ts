@@ -26,14 +26,13 @@ export class ClienteComponent implements OnInit {
   }
   //Falta corrigir esse método para alterar o cliente, porém tem que mexer no console.log a cima.
   salvarEdit(){
-    console.log(this.cliente.nomeCliente)
-    let att = this.cliente
-    this.clienteService.updateClient(this.id, this.cliente).subscribe()
-    alert('Alteração feita com sucesso!')
+    if(this.cliente.name == "")
+     return alert("Nome não pode ser vazio!")
+
+    return this.clienteService.updateClient(this.id, this.cliente).subscribe()
   }
 
   apagarClient(){
-    this.clienteService.deletClient(this.id)
-    alert('Cliente deletado!')
+    this.clienteService.deletClient(this.id).subscribe()
   }
 }

@@ -21,6 +21,7 @@ import { PedidosComponent } from './components/pedidos/pedidos.component';
 import { VerPedidoComponent } from './components/pages/ver-pedido/ver-pedido.component';
 import { RelatorioPedidosComponent } from './components/relatorios/relatorio-pedidos/relatorio-pedidos.component';
 import { LoginComponent } from './components/login/login.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { LoginComponent } from './components/login/login.component';
     PedidosComponent,
     VerPedidoComponent,
     RelatorioPedidosComponent,
-    LoginComponent
+    LoginComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,

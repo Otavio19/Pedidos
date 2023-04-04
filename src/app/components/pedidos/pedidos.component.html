@@ -12,10 +12,10 @@
     <div class="pedidosContainer" *ngFor="let pedido of pedidos">
 
         <div class="pedidoBox" routerLink="/pages/ver-pedido/{{pedido.id}}">
-            <div class="pedidoClient"><h3>{{pedido.clientePedido}}</h3></div>
+            <div class="pedidoClient"><h3>{{pedido.cliente_name}}</h3></div>
             <div class="pedidoId"><h2>{{pedido.id}}</h2></div>
-            <div class="pedidoVendedor">{{pedido.vendedorPedido}}</div>
-            <div class="pedidoValor">{{pedido.valorPedido}}R$</div>
+            <div class="pedidoVendedor">{{pedido.reponsavel_name}}</div>
+            <div class="pedidoValor">{{pedido.price}}R$</div>
         </div>
 
     </div>

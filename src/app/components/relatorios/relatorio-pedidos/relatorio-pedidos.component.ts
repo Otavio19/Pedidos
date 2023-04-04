@@ -29,7 +29,7 @@ export class RelatorioPedidosComponent implements OnInit {
     const value = target.value
     console.log(value)
     this.pedidos = this.pedidosFilter.filter(x =>
-      x.vendedorPedido!.trim().toLowerCase().includes(value.trim().toLowerCase())
+      x.cliente_name!.trim().toLowerCase().includes(value.trim().toLowerCase())
    )
 
    this.getFaturamento()
@@ -38,7 +38,7 @@ export class RelatorioPedidosComponent implements OnInit {
   getFaturamento(){
    this.totalFaturado = 0
     for(let i = 0 ; i < this.pedidos.length ; i++){
-      this.totalFaturado += Number(this.pedidos[i].valorPedido)
+      this.totalFaturado += Number(this.pedidos[i].price)
     }
 
     this.totalFaturadoFormatado = this.totalFaturado.toFixed(2)

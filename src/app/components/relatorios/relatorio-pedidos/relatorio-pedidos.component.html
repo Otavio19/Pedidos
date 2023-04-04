@@ -17,9 +17,9 @@
           <tbody>
             <tr *ngFor="let pedido of pedidos"  routerLink="/pages/ver-pedido/{{pedido.id}}">
               <td>{{pedido.id}}</td>
-              <td>{{pedido.clientePedido}}</td>
-              <td>{{pedido.vendedorPedido}}</td>
-              <td>{{pedido.valorPedido}}$</td>
+              <td>{{pedido.cliente_name}}</td>
+              <td>{{pedido.reponsavel_name}}</td>
+              <td>{{pedido.price}}$</td>
             </tr>
           </tbody>
                 <tfoot>

@@ -13,7 +13,7 @@ export class ListarClientesComponent implements OnInit {
   Client: ICliente[] = [];
   acao:any = []
 
-  constructor(private clienteService: ClientServiceService) { }
+  constructor(private http: ClientServiceService) { }
 
   ngOnInit(): void {
     this.getAllClient()
@@ -31,9 +31,9 @@ export class ListarClientesComponent implements OnInit {
   }
 
   getAllClient(){
-    this.clienteService.getAllClient().subscribe(dado => {
-      this.allClient = dado
-      this.Client = dado
+    this.http.getAllClient().subscribe(c => {
+      this.allClient = c
+      this.Client = c
     })
   }
 
@@ -41,6 +41,6 @@ export class ListarClientesComponent implements OnInit {
     const target = e.target as HTMLInputElement
     const value = target.value
     this.Client = this.allClient.filter(x =>
-      x.nomeCliente.trim().toLowerCase().includes(value.trim().toLowerCase())
+      x.name.trim().toLowerCase().includes(value.trim().toLowerCase())
    )}
   }

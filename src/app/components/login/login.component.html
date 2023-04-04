@@ -10,20 +10,21 @@
           type="text"
           name="email"
           required="required"
-          [(ngModel)]="login.email">
+          #usuarioLogin
+          >
           <label for="">E-mail</label>
         </div>
 
         <div class="inputBox">
           <input
-          type="password"
-          name="password"
+          type="text"
           required="required"
-          [(ngModel)]="login.password">
+          #senhaLogin
+          >
           <label for="">Senha</label>
         </div>
 
-        <button class="btnLogin" (click)="gerarToken()">Acessar</button>
+        <button class="btnLogin" (click)="efetuarLogin(usuarioLogin.value, senhaLogin.value )">Acessar</button>
         <label for="maskLado" class="subMudarLado">Não possui cadastro? Clique aqui</label>
       </form>
       
@@ -39,18 +40,17 @@
           type="text"
           name="password"
           required="required"
-          [(ngModel)]="registrar.name">
+          #nomeRegistro>
           <label for="">Nome Completo</label>
-          <h6 class="lblWarning">{{lblName}}</h6>
         </div>
         <div class="inputBox">
           <input
           type="text"
           name="email"
           required="required"
-          [(ngModel)]="registrar.email">
+          #emailRegistro
+          >
           <label for="">E-mail</label>
-          <h6 class="lblWarning">{{lblEmail}}</h6>
         </div>
 
         <div class="inputBox">
@@ -58,9 +58,9 @@
           type="password"
           name="password"
           required="required"
-          [(ngModel)]="registrar.password">
+          #senhaRegistro
+          >
           <label for="">Senha</label>
-          <h6 class="lblWarning">{{lblPassword}}</h6>
         </div>
 
         <div class="inputBox">
@@ -68,12 +68,18 @@
           type="password"
           name="password"
           required="required"
-          [(ngModel)]="confirmPassword">
+          #senhaRegistroConfirm
+          >
           <label for="">Repetir Senha</label>
-          <h6 class="lblWarning">{{lblPassword}}</h6>
         </div>
 
-        <button class="btnLogin" (click)="registrarConta()">Registrar-se</button>
+        <button class="btnLogin"
+        id="btnRegister"
+          (click)="efetuarRegistro(nomeRegistro.value, emailRegistro.value, senhaRegistro.value)">
+          Registrar-se
+        </button>
+        <p class="sucessRegister lblRegister" *ngIf="sucessView">{{ sucessMessage }}</p>
+        <p class="errorRegister lblRegister" *ngIf="errorView">{{ sucessMessage }}</p>
         <label for="maskLado" class="subMudarLado">Já possui cadastro? Clique aqui</label>
       </form>
     </div>
